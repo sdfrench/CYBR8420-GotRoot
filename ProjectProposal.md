@@ -20,16 +20,21 @@ https://en.wikipedia.org/wiki/Bitwarden
 
 ### Project Links
 ---
-1. [Website](https://bitwarden.com)
-2. [Repo](https://github.com/bitwarden)
+1. Website
+  * [bitwarden.com](https://bitwarden.com)
+2. Repo
+  * [github.com](https://github.com/bitwarden)
 3. Licenses
-  * [Server](https://github.com/bitwarden/server/blob/master/LICENSE.txt)
-  * [CLI](https://github.com/bitwarden/cli/blob/master/LICENSE.txt)
+  * [Server - AGLPv3](https://github.com/bitwarden/server/blob/master/LICENSE.txt)
+  * [CLI Client -GPLv3](https://github.com/bitwarden/cli/blob/master/LICENSE.txt)
 4. Community
   * [Developer Chat](https://gitter.im/bitwarden/Lobby)
   * [Online Forum](https://community.bitwarden.com/)
-5. [Contribution Agreement](https://community.bitwarden.com/tos)
-
+5. Contribution Agreement
+  * [Found in TOS](https://community.bitwarden.com/tos)
+6. Contribution Procedures
+   * Link here
+   
 ### Motivation
 ---
 Today's consumers not only expect their password manager to be secure, but it also must be easy to use, and work online using multiple devices. As a result, modern password managers are typically comprised of two components, the client which must be written for multiple hardware devices, and an online server, which is typically on the cloud and is where the encrypted password vault is stored. This of course presents many more security challenges over the traditional password manager that just stored the vault locally on the device it was ran from. This software is one of the premier online password managers on the market today but unlike most others, it is completely open source. This transpaency is welcome by savvy consumers who want to know exactly how their sensitive data is stored and protected on the cloud.  If a consumer is not comfortable storing their sensitive data one the cloud, no problem. This software also gives the consumer the option to host the entire server stack on their own online host with several operating systems to choose from. 
