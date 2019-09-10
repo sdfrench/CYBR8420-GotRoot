@@ -11,8 +11,11 @@ Bitwarden is created by 8bit Solutions LLC with its first release on August 10, 
 The app is very popular in its domain. It is ranked 4 stars and appears for the most part of reviews among the top 10 of the best password manager in 2019.
 
 References
+
 https://www.digitaltrends.com/computing/best-password-managers/ 
+
 https://www.cnet.com/news/the-best-password-managers-of-2019/ 
+
 https://en.wikipedia.org/wiki/Bitwarden
 
 **Project Links**
