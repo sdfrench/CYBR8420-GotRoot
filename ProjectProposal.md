@@ -32,11 +32,11 @@ https://en.wikipedia.org/wiki/Bitwarden
 
 ### Motivation
 ---
-Bitwarden is one of the premier passwword managers on the marktet today. Not only do today's consumers expect their password manager to be secure, it must be easy to use, and work with multiple onlline devices. As a result this infers that the password manager is comprised of two components, the client which must be written for multiple hardware devices, but also will have a server presense usually on the cloud where the encrypted passwrod vault iskept. This of cousre presents many security challanges but as mentioned above, Bitwarden seems to be up to the ask. On top of that Bitwarden is no black box, as it is open source and completely transparent in its implementation. Dont want to store your vault on the cloud? Bitwarden has got you covered there too. Anyone can host the entire server stack on their own online host with several operating systems to choose from. 
+Today's consumers not only expect their password manager to be secure, but it also must be easy to use, and work online using multiple devices. As a result, modern password managers are typically comprised of two components, the client which must be written for multiple hardware devices, and an online server, which is typically on the cloud and is where the encrypted password vault is stored. This of course presents many more security challenges over the traditional password manager that just stored the vault locally on the device it was ran from. This software is one of the premier online password managers on the market today but unlike most others, it is completely open source. This transpaency is welcome by savvy consumers who want to know exactly how their sensitive data is stored and protected on the cloud.  If a consumer is not comfortable storing their sensitive data one the cloud, no problem. This software give the consumer the option to host the entire server stack on their own online host with several operating systems to choose from. 
  
 ### Operational Environment
 ---
-Bitwarden is for anyone who wants to have access to their passwords from almost any online device. Most users are more than likely to be individual consumers, however do to the fact the server stack can be deployed to an online server, there may be some commercial interest as well.
+Bitwarden is for anyone who wants to have access to their passwords from almost any online device. Most users are more than likely to be individual consumers, however do to the fact the server stack can be deployed on an online server, there may be some commercial interest for this software as well.
 
 ### Security Requirements
 ---
