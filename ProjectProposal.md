@@ -25,7 +25,7 @@ https://en.wikipedia.org/wiki/Bitwarden
 2. Repo
   * [github.com](https://github.com/bitwarden)
 3. Licenses
-  * [Server - AGLPv3](https://github.com/bitwarden/server/blob/master/LICENSE.txt)
+  * [Server - AGPLv3](https://github.com/bitwarden/server/blob/master/LICENSE.txt)
   * [CLI Client -GPLv3](https://github.com/bitwarden/cli/blob/master/LICENSE.txt)
 4. Community
   * [Developer Chat](https://gitter.im/bitwarden/Lobby)
