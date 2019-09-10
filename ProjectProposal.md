@@ -18,7 +18,6 @@ https://www.cnet.com/news/the-best-password-managers-of-2019/
 
 https://en.wikipedia.org/wiki/Bitwarden
 
-
 ### Project Links
 ---
 1. [Website](https://bitwarden.com)
@@ -66,3 +65,46 @@ The software has implemented the following security features (taken from bitward
 
 ### History
 ---
+#### [Bitwarden Security Assessment Report in November 8th, 2018](https://cdn.bitwarden.net/misc/Bitwarden%20Security%20Assessment%20Report%20-%20v2.pdf)
+
+* BWN-01-001 – Browser extension autofill only checks top-level website address
+When viewing a website, the Bitwarden browser extension provides autofill functions based on the URL shown in the browser’s address bar. It is possible for a website to include additional webpages inside of it by implementing embedded iframes. Bitwarden does not check the URL of these embedded iframes and assumes that they rightfully belong to the “top-level” website.
+
+* BWN-01-006 – Desktop RCE and web vault XSS via login URI when “launched”
+Bitwarden allows users to associate a login item with URIs. In the event a scheme/protocol is present on a URI, the Bitwarden desktop application allows users to quickly “launch” these URIs, which opens the associated resource. No additional checks are performed on these URIs to determine if they are of a malicious nature.
+
+* BWN-01-007 – Weak master passwords are allowed
+A user’s master password derives the master encryption key which is used to unlock all other data in a user’s Bitwarden vault. Bitwarden allows users to choose any master password. The only restriction in place for a master password that it must be at least 8 characters in length. Due to this lax policy, users can still choose very weak passwords such as “12345678” and “iloveyou”.
+
+* BWN-01-008 – Malicious API server could steal organization encryption keys
+While on-boarding new users in an organization, the “confirmation” process performs an exchange of the organization’s encryption key from the organization admin to the new organization user. The organization admin user asks the server for the new user’s public key, which is then used to encrypt the organization key before being transmitted back to the server for storage. If the server is malicious, it can provide the organization admin with a public key that it owns rather than the key owned by the newly on-boarded user, leading to the organization key being leaked to a malicious party.
+
+* BWN-01-010 – Changing the master password does not change encryption keys
+Multiple keys are involved with a user’s Bitwarden account:
+	1. A “public key” and “private key” is used for the purposes of sharing protected information with other Bitwarden users (via organizations).
+	2. An “encryption key” and “mac key” is used to encrypt all data in a Bitwarden user’s vault. These keys also protect the user’s private key (from #1 above).
+	3. A “master key” is derived from a Bitwarden user’s master password. The master key is used to protect and unlock the encryption key and mac key (from #2 above).
+During a password change operation, only the master key is changed which results in re-encrypting the encryption key and mac key. Since the encryption key and mac key do not change, no other data in the user’s vault is re-encrypted and decrypting existing and new data uses the same encryption key.
+
+#### [Vulnerability report from August 16th, 2017 to October 18th, 2018](https://hackerone.com/bitwarden/scope_versions?change=22716)
+| Type		      |	Identifier	         |	Max. Severity   |
+|---------------------|--------------------------|----------------------|
+| Domain  	      |	bitwarden.com.           |	Critical	|
+| Domain  	      |	api.bitwarden.com        |	Critical	|
+| Domain  	      |	identity.bitwarden.com   |	Critical	|
+| Domain  	      |	bitwarden.com.           |	Critical |
+| Domain  	      |	api.bitwarden.com        |	Critical |
+| Domain  	      |	identity.bitwarden.com   |	Critical |
+| iOS: App Store      | com.8bit.bitwarden	 |	Critical |
+| Android: Play Store |	com.x8bit.bitwarden	 |	Critical |
+| Domain	      | vault.bitwarden.com	 |	Critical |
+| Source code	      |	https://github.com/bitwarden |	Critical |
+| Other		      |	https://chrome.google.com/webstore/detail/bitwarden-free-password-m/nngceckbapebfimnlniiiahkandclblb?hl=en) |		 Critical |
+| Other		      |	https://addons.mozilla.org/en-US/firefox/addon/bitwarden-password-manager/ | Critical |
+| Other		      | https://www.microsoft.com/store/p/bitwarden-free-password-manager/9p6kxl0svnnl | Critical |
+| Other |	https://addons.opera.com/extensions/details/bitwarden-free-password-manager/ | Critical | 
+| Domain | help.bitwarden.com | Critical |
+| Executable | https://github.com/bitwarden/desktop/releases/latest | Critical |
+| Executable | https://github.com/bitwarden/cli/releases/latest | Critical |
+| Other | https://safari-extensions.apple.com/details/?id=com.bitwarden.safari-LTZ2PFU5D6 | Critical |
+
