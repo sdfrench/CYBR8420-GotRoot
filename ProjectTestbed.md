@@ -1,5 +1,5 @@
 # Testbed Environment
-  PenTesting will be performed in a [virtual environment](https://github.com/caseyschmitz/CYBR8420-GotRoot).
+  PenTesting will be performed in a [virtual environment](https://github.com/caseyschmitz/CYBR8420-GotRoot/blob/master/ProjectTestbed.md).
   
 # Virtual Test Bed Host
   VMWare Workstation 14 Pro (v14.1.1)
