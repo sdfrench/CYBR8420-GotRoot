@@ -36,8 +36,8 @@ https://en.wikipedia.org/wiki/Bitwarden
 5. Contribution Agreement
   * [Terms of Service](https://community.bitwarden.com/tos)
 6. Contribution Procedures
-   * [Security Issues Disclosure Policy](https://github.com/bitwarden/server/blob/master/SECURITY.md)
-   * [Bug Bounty Scopes](https://hackerone.com/bitwarden)
+  * [Security Issues Disclosure Policy](https://github.com/bitwarden/server/blob/master/SECURITY.md)
+  * [Bug Bounty Scopes](https://hackerone.com/bitwarden)
    
 ### Motivation
 ---
