@@ -23,25 +23,16 @@ https://en.wikipedia.org/wiki/Bitwarden
 
 ### Software Links
 ---
-1. Website
-  * [bitwarden.com](https://bitwarden.com)
-2. Repo
-  * [github.com](https://github.com/bitwarden)
-3. Licenses
-  * [Server - AGPLv3](https://github.com/bitwarden/server/blob/master/LICENSE.txt)
-  * [CLI Client -GPLv3](https://github.com/bitwarden/cli/blob/master/LICENSE.txt)
-4. Community
-  * [Developer Chat](https://gitter.im/bitwarden/Lobby)
-  * [Online Forum](https://community.bitwarden.com/)
-5. Contribution Agreement
-  * [Terms of Service](https://community.bitwarden.com/tos)
-6. Contribution Procedures
-  * [Security Issues Disclosure Policy](https://github.com/bitwarden/server/blob/master/SECURITY.md)
-  * [Bug Bounty Scopes](https://hackerone.com/bitwarden)
+1. Website - [bitwarden.com](https://bitwarden.com)
+2. Repo - [github.com](https://github.com/bitwarden)
+3. Licenses - [Server - AGPLv3](https://github.com/bitwarden/server/blob/master/LICENSE.txt), [CLI Client -GPLv3](https://github.com/bitwarden/cli/blob/master/LICENSE.txt)
+4. Community - [Developer Chat](https://gitter.im/bitwarden/Lobby), [Online Forum](https://community.bitwarden.com/)
+5. Contribution Agreement - [Terms of Service](https://community.bitwarden.com/tos)
+6. Contribution Procedures - [Security Issues Disclosure Policy](https://github.com/bitwarden/server/blob/master/SECURITY.md), [Bug Bounty Scopes](https://hackerone.com/bitwarden)
    
 ### Motivation
 ---
-Today’s consumers not only expect their password manager to be secure, be easy to use, work online, while supporting multiple types of devices. To work online, modern password managers are typically comprised of two major components, the client, which typically supports multiple hardware devices, and the server, which is 'online' (typically in the cloud) and is where the encrypted password vault is stored. This of course presents many more security challenges over the traditional password manager which stores its password vault locally.  In addition, popular password managers often offer features that not only make them easy to use but also help protect against unsafe practices. For exmaple, most password managers offer password generation which allow the user to quickly generate and access strong passwords for each site. 
+Today’s consumers don't just expect their password manager to be secure; ease of use, online compatibility, and extensive device support also contribute to a user's satisfaction with their password manager. To work online, modern password managers are typically comprised of two major components, the client, which typically supports multiple hardware devices, and the server, which is 'online' (typically in the cloud) and is where the encrypted password vault is stored. This of course presents many more security challenges over the traditional password manager which stores its password vault locally.  In addition, popular password managers often offer features that not only make them easy to use but also help protect against unsafe practices. For example, most password managers offer password generation which allow the user to quickly generate and access strong passwords for each site. 
                    
 When you consider how many login credentials a typical user has to keep track of these days, it is easy to see why a good password manager is so important to have. This software is one of the more popular password managers on the market today, so it can inferred it has a good balance between ease of use, features, and security. However, unlike most of the others, it is completely open source. This transparency is welcomed by savvy consumers who want to know exactly how their sensitive data is stored and protected both on the client and in the cloud. In addition if a consumer is not comfortable storing their sensitive data on the cloud, this software allows them to easily stand up a server stack on their own online host.
 
@@ -49,17 +40,17 @@ We chose this software due to its features, popularity and the fact it is open s
  
 ### Operational Environment
 ---
-Bitwarden is for anyone who wants to have secure online access to their passwords from almost any type of device. We feel that the overwhleming majority of the  users that use this software are going to be individual consumers, however do to the fact the server stack can be easily deployed on an online server, there may be some commercial interest as well.
+Bitwarden is for anyone who wants to have secure online access to their passwords from almost any type of device. We feel that the overwhelming majority of the  users that use this software are going to be individual consumers, however due to the fact the server stack can be easily deployed on a local server, there may be some commercial interest as well among small and medium-sized companies.
 
 ### Security Requirements
 ---
 As an online password manager/vault the software must:
-  * Ensure all sensitve data (passwords and corresponding metadata) is encrypted when at rest or in storage.
-  * Ensure all sensitve data is encrypted before it leaves the device to online storage.
+  * Ensure all sensitive data (passwords and corresponding metadata) is encrypted when at rest or in storage.
+  * Ensure all sensitive data is encrypted before it leaves the device to online storage.
   * Ensure clear text data is only kept in memory and removed when no longer needed.
   * Ensure encrypted data can only be unencrypted with one encryption key.
   * Only use algorithms/libraries for encryption and key generation that are proven to be secure by current industry standards.
-  * Implement a sound key management solution that protects and manages keys thoughout their life cycle, from generation to revocation.
+  * Implement a sound key management solution that protects and manages keys throughout their life cycle, from generation to revocation.
   * Solution should backup encrypted data.
   * Source should be audited.
 
