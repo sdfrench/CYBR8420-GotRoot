@@ -1,6 +1,7 @@
 # Project Proposal
 ## Team GotRoot
-  * [Project Repo](htpps://github.com/caseyschmitz/CYBR8420-GotRoot)
+
+  * [Project Repo](https://github.com/caseyschmitz/CYBR8420-GotRoot)
   * [Project Tasks](https://github.com/)
 
 ## BitWarden
@@ -20,7 +21,7 @@ https://www.cnet.com/news/the-best-password-managers-of-2019/
 
 https://en.wikipedia.org/wiki/Bitwarden
 
-### Project Links
+### Software Links
 ---
 1. Website
   * [bitwarden.com](https://bitwarden.com)
