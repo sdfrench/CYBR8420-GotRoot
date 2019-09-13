@@ -1,5 +1,8 @@
 # Project Proposal
-## Team GotRoot ([Github Repo](https://github.com/caseyschmitz/CYBR8420-GotRoot))
+## Team GotRoot
+
+  * [Project Repo](https://github.com/caseyschmitz/CYBR8420-GotRoot)
+  * [Project Proposal Tasks](https://github.com/caseyschmitz/CYBR8420-GotRoot/projects/1)
 
 ## BitWarden
 Bitwarden is a free and open-source password management service that stores sensitive information such as website credentials in an encrypted vault. The Bitwarden platform offers a variety of client applications including a web interface, desktop applications, browser extensions, mobile apps, and a CLI (Command Line Interface). It is written primarily in TypeScript and C#. 
@@ -18,7 +21,7 @@ https://www.cnet.com/news/the-best-password-managers-of-2019/
 
 https://en.wikipedia.org/wiki/Bitwarden
 
-### Project Links
+### Software Links
 ---
 1. Website
   * [bitwarden.com](https://bitwarden.com)
@@ -31,17 +34,22 @@ https://en.wikipedia.org/wiki/Bitwarden
   * [Developer Chat](https://gitter.im/bitwarden/Lobby)
   * [Online Forum](https://community.bitwarden.com/)
 5. Contribution Agreement
-  * [Found in TOS](https://community.bitwarden.com/tos)
+  * [Terms of Service](https://community.bitwarden.com/tos)
 6. Contribution Procedures
-   * Link here
+  * [Security Issues Disclosure Policy](https://github.com/bitwarden/server/blob/master/SECURITY.md)
+  * [Bug Bounty Scopes](https://hackerone.com/bitwarden)
    
 ### Motivation
 ---
-Today's consumers not only expect their password manager to be secure, but it also must be easy to use, and work online using multiple devices. As a result, modern password managers are typically comprised of two components, the client which must be written for multiple hardware devices, and an online server, which is typically on the cloud and is where the encrypted password vault is stored. This of course presents many more security challenges over the traditional password manager that just stored the vault locally on the device it was ran from. This software is one of the premier online password managers on the market today but unlike most others, it is completely open source. This transpaency is welcome by savvy consumers who want to know exactly how their sensitive data is stored and protected on the cloud.  If a consumer is not comfortable storing their sensitive data one the cloud, no problem. This software also gives the consumer the option to host the entire server stack on their own online host with several operating systems to choose from. 
+Today’s consumers not only expect their password manager to be secure, be easy to use, work online, while supporting multiple types of devices. To work online, modern password managers are typically comprised of two major components, the client, which typically supports multiple hardware devices, and the server, which is 'online' (typically in the cloud) and is where the encrypted password vault is stored. This of course presents many more security challenges over the traditional password managers which stores its password vault locally.  In addition, popular password managers often offer features that not only make them easy to use but also help protect against unsafe practices. For exmaple, most password managers offer password generation which allow the user to quickly generate and access strong passwords for each site. 
+                   
+When you consider how many login credentials a typical user has to keep track of these days, it is easy to see why a good password manager is so important to have. This software is one of the more popular password managers on the market today, so it can inferred it has a good balance between ease of use, features, and security. However, unlike most of the others, it is completely open source. This transpaency is welcomed by savvy consumers who want to know exactly how their sensitive data is stored and protected both on the client and in the cloud. In addition if a consumer is not comfortable storing their sensitive data on the cloud, this software allows them to easily stand up a server stack on their own online host.
+
+We chose this software due to its features, popularity and the fact it is open source, but in large part for its reputation of being secure. Even though this application appears to be well written, and has been subject to third party review, we welcome the challenge of reviewing this application using the perspectives taught in this course. 
  
 ### Operational Environment
 ---
-Bitwarden is for anyone who wants to have access to their passwords from almost any online device. Most users are more than likely to be individual consumers, however do to the fact the server stack can be deployed on an online server, there may be some commercial interest for this software as well.
+Bitwarden is for anyone who wants to have secure online access to their passwords from almost any type of device. We feel that the overwhleming majority of the  users that use this software are going to be individual consumers, however do to the fact the server stack can be easily deployed on an online server, there may be some commercial interest as well.
 
 ### Security Requirements
 ---
