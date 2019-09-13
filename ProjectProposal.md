@@ -9,7 +9,7 @@ Bitwarden is a free and open-source password management service that stores sens
 	
 No matter what device you use, Bitwarden is compatible. It offers native apps for Windows, macOS, Linux, Android, and iOS. Its browser extension supports the expected Chrome, Edge, Firefox, Opera, and Safari, as well as the less-common Vivaldi, Brave, and Tor Browser. It is distributed under the licenses GPLv3 and AGPLv3.
 	
-Bitwarden is created by 8bit Solutions LLC with its first release on August 10, 2016. The project has 29 contributors.
+Bitwarden was created by 8bit Solutions LLC with its first release on August 10, 2016. The project has 29 contributors.
 
 The app is very popular in its domain. It is ranked 4 stars and appears for the most part of reviews among the top 10 of the best password manager in 2019.
 
@@ -41,9 +41,9 @@ https://en.wikipedia.org/wiki/Bitwarden
    
 ### Motivation
 ---
-Today’s consumers not only expect their password manager to be secure, be easy to use, work online, while supporting multiple types of devices. To work online, modern password managers are typically comprised of two major components, the client, which typically supports multiple hardware devices, and the server, which is 'online' (typically in the cloud) and is where the encrypted password vault is stored. This of course presents many more security challenges over the traditional password managers which stores its password vault locally.  In addition, popular password managers often offer features that not only make them easy to use but also help protect against unsafe practices. For exmaple, most password managers offer password generation which allow the user to quickly generate and access strong passwords for each site. 
+Today’s consumers not only expect their password manager to be secure, be easy to use, work online, while supporting multiple types of devices. To work online, modern password managers are typically comprised of two major components, the client, which typically supports multiple hardware devices, and the server, which is 'online' (typically in the cloud) and is where the encrypted password vault is stored. This of course presents many more security challenges over the traditional password manager which stores its password vault locally.  In addition, popular password managers often offer features that not only make them easy to use but also help protect against unsafe practices. For exmaple, most password managers offer password generation which allow the user to quickly generate and access strong passwords for each site. 
                    
-When you consider how many login credentials a typical user has to keep track of these days, it is easy to see why a good password manager is so important to have. This software is one of the more popular password managers on the market today, so it can inferred it has a good balance between ease of use, features, and security. However, unlike most of the others, it is completely open source. This transpaency is welcomed by savvy consumers who want to know exactly how their sensitive data is stored and protected both on the client and in the cloud. In addition if a consumer is not comfortable storing their sensitive data on the cloud, this software allows them to easily stand up a server stack on their own online host.
+When you consider how many login credentials a typical user has to keep track of these days, it is easy to see why a good password manager is so important to have. This software is one of the more popular password managers on the market today, so it can inferred it has a good balance between ease of use, features, and security. However, unlike most of the others, it is completely open source. This transparency is welcomed by savvy consumers who want to know exactly how their sensitive data is stored and protected both on the client and in the cloud. In addition if a consumer is not comfortable storing their sensitive data on the cloud, this software allows them to easily stand up a server stack on their own online host.
 
 We chose this software due to its features, popularity and the fact it is open source, but in large part for its reputation of being secure. Even though this application appears to be well written, and has been subject to third party review, we welcome the challenge of reviewing this application using the perspectives taught in this course. 
  
@@ -58,7 +58,7 @@ As an online password manager/vault the software must:
   * Ensure all sensitve data is encrypted before it leaves the device to online storage.
   * Ensure clear text data is only kept in memory and removed when no longer needed.
   * Ensure encrypted data can only be unencrypted with one encryption key.
-  * Only use algorithms/libraries for enccyption and key generation that are proven to be secure by current industry standards.
+  * Only use algorithms/libraries for encryption and key generation that are proven to be secure by current industry standards.
   * Implement a sound key management solution that protects and manages keys thoughout their life cycle, from generation to revocation.
   * Solution should backup encrypted data.
   * Source should be audited.
@@ -70,11 +70,11 @@ The software has implemented the following security features (taken from bitward
   * Data is never sent to the Bitwarden cloud servers without first being encrypted on your local device.
   * Data is only decrypted in memory, as needed. 
   * Data is fully encrypted and/or hashed before leaving your local device. Bitwarden servers only store encrypted and hashed data, therefore no one, including the Bitwarden team, can ever see, read, or reverse engineer the encrypted data to gain access to the real data in clear text.
-  * Data is encyrpted using AES 256 bit encryption which is used by the US government and other government agencies around the world for protecting top secret data.
+  * Data is encrypted using AES 256 bit encryption which is used by the US government and other government agencies around the world for protecting top secret data.
   * PBKDF2 SHA-256 is used to derive the encryption key from your master password. This key is then salted and hashed and passes through a minimum of 200,001 iterations before it stored online.
   * Only invokes crypto from popular and reputable crypto libraries that are written and maintained by cryptography experts. 
-  * By default data is stored on Azure cloud. Copies of encypted data are stored on the local device as well.
-  * All source code can by audited by the public on github.com and has been audited by third-party.
+  * By default data is stored on Azure cloud. Copies of encrypted data are stored on the local device as well.
+  * All source code can be by audited by the public on github.com and has been audited by third-party.
 
 ### History
 ---
