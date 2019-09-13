@@ -2,7 +2,7 @@
 ## Team GotRoot
 
   * [Project Repo](https://github.com/caseyschmitz/CYBR8420-GotRoot)
-  * [Project Tasks - NOT DONE](https://github.com/)
+  * [Project Tasks](https://github.com/caseyschmitz/CYBR8420-GotRoot/projects)
 
 ## BitWarden
 Bitwarden is a free and open-source password management service that stores sensitive information such as website credentials in an encrypted vault. The Bitwarden platform offers a variety of client applications including a web interface, desktop applications, browser extensions, mobile apps, and a CLI (Command Line Interface). It is written primarily in TypeScript and C#. 
