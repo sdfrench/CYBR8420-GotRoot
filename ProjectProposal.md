@@ -5,13 +5,13 @@
   * [Project Proposal Tasks](https://github.com/caseyschmitz/CYBR8420-GotRoot/projects/1)
 
 ## BitWarden
-Bitwarden is a free and open-source password management service that stores sensitive information such as website credentials in an encrypted vault. The Bitwarden platform offers a variety of client applications including a web interface, desktop applications, browser extensions, mobile apps, and a CLI (Command Line Interface). It is written primarily in TypeScript and C#. 
+Bitwarden is a free and open-source password management service that stores sensitive information, such as website credentials, in an encrypted vault. The Bitwarden platform offers a variety of client applications, including: Command Line (CLI) and web interfaces, desktop and mobile applications, and browser extensions. Bitwarden is primarily written in TypeScript and C#. 
 	
-No matter what device you use, Bitwarden is compatible. It offers native apps for Windows, macOS, Linux, Android, and iOS. Its browser extension supports the expected Chrome, Edge, Firefox, Opera, and Safari, as well as the less-common Vivaldi, Brave, and Tor Browser. It is distributed under the licenses GPLv3 and AGPLv3.
+Bitwarden is universally compatible, offering native applications for Windows, macOS, Linux, Android, and iOS. Chrome, Edge, Firefox, Opera, and Safari, as well as the less-common, Vivaldi, Brave, and Tor Browsers are supported. Bitwarden is distributed under the licenses GPLv3 and AGPLv3.
 	
-Bitwarden was created by 8bit Solutions LLC with its first release on August 10, 2016. The project has 29 contributors.
+Bitwarden was created by 8bit Solutions LLC, and first released on August 10, 2016. The project has 29 contributors.
 
-The app is very popular in its domain. It is ranked 4 stars and appears for the most part of reviews among the top 10 of the best password manager in 2019.
+The application is very popular within the domain, receiving 4 stars and ranks in the top 10 of 'best' password managers of 2019.
 
 References
 
@@ -32,15 +32,15 @@ https://en.wikipedia.org/wiki/Bitwarden
    
 ### Motivation
 ---
-Today’s consumers don't just expect their password manager to be secure; ease of use, online compatibility, and extensive device support also contribute to a user's satisfaction with their password manager. To work online, modern password managers are typically comprised of two major components, the client, which typically supports multiple hardware devices, and the server, which is 'online' (typically in the cloud) and is where the encrypted password vault is stored. This of course presents many more security challenges over the traditional password manager which stores its password vault locally.  In addition, popular password managers often offer features that not only make them easy to use but also help protect against unsafe practices. For example, most password managers offer password generation which allow the user to quickly generate and access strong passwords for each site. 
+Consumers expect password managers to be secure, easy to use, and capable of supporting multiple platforms and devices in an online environment. Modern password managers are typically comprised of two major components. The client provides 'local' platform support, while the 'online' server stores the encrypted password vault. This configuration presents additional security challenges over traditional password managers, where the password vault is stored locally. Popular password managers offer features that guard against unsafe practices. Most password managers provide users with quick generation and access of strong passwords for each site. 
                    
-When you consider how many login credentials a typical user has to keep track of these days, it is easy to see why a good password manager is so important to have. This software is one of the more popular password managers on the market today, so it can inferred it has a good balance between ease of use, features, and security. However, unlike most of the others, it is completely open source. This transparency is welcomed by savvy consumers who want to know exactly how their sensitive data is stored and protected both on the client and in the cloud. In addition if a consumer is not comfortable storing their sensitive data on the cloud, this software allows them to easily stand up a server stack on their own online host.
+When you consider how many login credentials a typical user has to keep track of these days, it is easy to see why a good password manager is so important. Bitwarden is one of the more popular password managers on the market, balancing ease of use, features, and security. Unlike most of the competition, Bitwarden is completely open source, and this transparency is welcomed by savvy consumers who want to know exactly how their sensitive data is stored and protected, both on the client and in the cloud. In addition, if a consumer is not comfortable storing their sensitive data on the cloud, the software allows them to easily stand up a server stack on their own host.
 
-We chose this software due to its features, popularity and the fact it is open source, but in large part for its reputation of being secure. Even though this application appears to be well written, and has been subject to third party review, we welcome the challenge of reviewing this application using the perspectives taught in this course. 
+Our team chose this software based on its features, popularity, open source code, and reputation for security. Though Bitwarden appears to be well written and the subject of third party review, our team welcomes the challenge of reviewing the application using the technics demonstrated in the course material. 
  
 ### Operational Environment
 ---
-Bitwarden is for anyone who wants to have secure online access to their passwords from almost any type of device. We feel that the overwhelming majority of the  users that use this software are going to be individual consumers, however due to the fact the server stack can be easily deployed on a local server, there may be some commercial interest as well among small and medium-sized companies.
+Bitwarden is for anyone who desires secure online access to their passwords from almost any type of device. While the vast majority of Bitwardens clientel are individual consumers, the ease of deployment may provide some commercial interest among small and medium sized businesses.
 
 ### Security Requirements
 ---
