@@ -11,7 +11,7 @@ Bitwarden is universally compatible, offering native applications for Windows, m
 	
 Bitwarden was created by 8bit Solutions LLC, and first released on August 10, 2016. The project has 29 contributors.
 
-The application is very popular within the domain, receiving 4 stars and ranks in the top 10 of 'best' password managers in 2019.
+The application is very popular within the domain, receiving 4 stars and ranks in the top 10 of 'best' password managers of 2019.
 
 References
 
@@ -34,9 +34,9 @@ https://en.wikipedia.org/wiki/Bitwarden
 ---
 Consumers expect password managers to be secure, easy to use, and capable of supporting multiple platforms and devices in an online environment. Modern password managers are typically comprised of two major components. The client provides 'local' platform support, while the 'online' server stores the encrypted password vault. This configuration presents additional security challenges over traditional password managers, where the password vault is stored locally. Popular password managers offer features that guard against unsafe practices. Most password managers provide users with quick generation and access of strong passwords for each site. 
                    
-When you consider how many login credentials a typical user has to keep track of these days, it is easy to see why a good password manager is so important to have. Bitwarden is one of the more popular password managers on the market, balancing ease of use, features, and security. Unlike most of the competition, Bitwarden is completely open source, and this transparency is welcomed by savvy consumers who want to know exactly how their sensitive data is stored and protected, both on the client and in the cloud. In addition, if a consumer is not comfortable storing their sensitive data on the cloud, the software allows them to easily stand up a server stack on their own online host.
+When you consider how many login credentials a typical user has to keep track of these days, it is easy to see why a good password manager is so important. Bitwarden is one of the more popular password managers on the market, balancing ease of use, features, and security. Unlike most of the competition, Bitwarden is completely open source, and this transparency is welcomed by savvy consumers who want to know exactly how their sensitive data is stored and protected, both on the client and in the cloud. In addition, if a consumer is not comfortable storing their sensitive data on the cloud, the software allows them to easily stand up a server stack on their own host.
 
-Our team chose this software based on its features, popularity, open source code, and reputation of security. Though Bitwarden appears to be well written and the subject of third party review, our team welcomes the challenge of reviewing the application using the technics demonstrated in the course material. 
+Our team chose this software based on its features, popularity, open source code, and reputation for security. Though Bitwarden appears to be well written and the subject of third party review, our team welcomes the challenge of reviewing the application using the technics demonstrated in the course material. 
  
 ### Operational Environment
 ---
