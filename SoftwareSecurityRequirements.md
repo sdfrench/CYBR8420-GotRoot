@@ -59,7 +59,7 @@ Bitwarden will try to log out any clients that still are connected to server how
 
 ![alt text](Images/)
 
-### 3. Manaage Sensitive items 
+### 3. Manage Sensitive items 
 
 #### Use Cases
 
