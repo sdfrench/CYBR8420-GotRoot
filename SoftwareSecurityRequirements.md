@@ -47,9 +47,13 @@ Bitwarden will try to log out any clients that still are connected to server how
 ### 2. Import / Export Sensitive Information 
 
 #### Use Cases
-
+Derive Key
 
 #### Misuse Cases / Security Requirements
+	Reveal Encryption Key/s
+		Brute Force	- use  strong KDF (slow hash) to derive encryption key
+			- ensure use random seed and unique salt for derivation function
+			- Ensure adequate number of iterations
 
 
 #### Alignment of Security Requirements
@@ -60,11 +64,28 @@ Bitwarden will try to log out any clients that still are connected to server how
 ![alt text](Images/Use%20Cases-Key%20Encryption%20Key.png)
 
 ### 3. Manage Secrets
-#### Use Cases
 
+#### Use Cases
+	Store Secret -> encrypt secret, sync vault
+	Retrieve Secret -> decrypt secret
+	View Secret |
 
 #### Misuse Cases / Security Requirements
-
+	Steal Secret
+		Network Eves-dropping
+			Encrypt secret in-transit- encrypt secret client side, encrypt communication
+		reveal Clear text - scrub memory (before de-allocation) immediately after use, i.e auth 
+			or locked, not always possible due to libs, etc..
+			- never store at rest in clear - on disk, vault
+			- only encyrpt/decrypt one secret (and its metadata) at a time
+	
+	Leak Information
+		Encrypt all secret metadata
+		Ensure encrypted blobs do not match or reveal like data
+		
+	Corrupt Secret	
+		- only encrypt/decrypt one secret at a time
+		- Do no re-use old encryption key after changing
 
 #### Alignment of Security Requirements
 
@@ -75,9 +96,16 @@ Bitwarden will try to log out any clients that still are connected to server how
 ### 4. Manage Passwords (Subset of Secrets) 
 
 #### Use Cases
-
+Password Generation
 
 #### Misuse Cases / Security Requirements
+Attack Goals: (In addition to those defined in secrets)
+	Steal Password
+		Brute force Attack
+			Generate Password - ensure password strength/complexit meets min. requirements
+		Replay Attack
+			Prevent Reuse of passwords across multiple accounts	Share Secret - assign user to share secret with
+
 
 
 #### Alignment of Security Requirements
@@ -89,10 +117,17 @@ Bitwarden will try to log out any clients that still are connected to server how
 ### 5. Manage Sharing 
 
 #### Use Cases
-
+  Share Secret - assign user, assign perms, remove user
+	Access Shared secret
 
 #### Misuse Cases / Security Requirements
-
+	Steal Secret 
+		bypass share - secret is encrypted with user pub key
+	Change Secret (Integrity)
+		Unauthorized change - Assign RO access (How is this enforced)
+	Access Secret
+		Secret is stored in each users local vault
+		Encrypted with their public key (asymmetric encryption)
 
 #### Alignment of Security Requirements
 
