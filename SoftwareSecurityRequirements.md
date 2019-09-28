@@ -44,7 +44,7 @@ Bitwarden will try to log out any clients that still are connected to server how
 
 ![alt text](Images/Use%20Cases-Master%20Password.png)
 
-### 2. Import / Export Sensitive Information 
+### 2. Manage Encryption Key 
 
 #### Use Cases
 Derive Key
