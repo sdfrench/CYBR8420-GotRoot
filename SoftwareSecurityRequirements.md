@@ -11,7 +11,7 @@ Since the majority of our focus will be client side since that is where the majo
 
 ## Essential Data Flows: 
 
-### 1. Manage master password / encryption key 
+### 1. Manage Master Password 
 
 #### Use Cases
 
@@ -42,7 +42,7 @@ Bitwarden will try to log out any clients that still are connected to server how
 
 #### UML Diagram
 
-![alt text](Images/SSEReqs-UseCase1.png)
+![alt text](Images/Use%20Cases-Master%20Password.png)
 
 ### 2. Import / Export Sensitive Information 
 
@@ -57,9 +57,22 @@ Bitwarden will try to log out any clients that still are connected to server how
 
 #### UML Diagram
 
-![alt text](Images/)
+![alt text](Images/Use%20Cases-Key%20Encryption%20Key.png)
 
-### 3. Manage Sensitive items 
+### 3. Manage Secrets
+#### Use Cases
+
+
+#### Misuse Cases / Security Requirements
+
+
+#### Alignment of Security Requirements
+
+
+#### UML Diagram
+![alt text](Images/Use%20Cases-Secrets.png)
+
+### 4. Manage Passwords (Subset of Secrets) 
 
 #### Use Cases
 
@@ -71,8 +84,9 @@ Bitwarden will try to log out any clients that still are connected to server how
 
 
 #### UML Diagram
+![alt text](Images/Use%20Cases-Passwords.png)
 
-### 4. Sharing of Sensitive items 
+### 5. Manage Sharing 
 
 #### Use Cases
 
@@ -84,5 +98,4 @@ Bitwarden will try to log out any clients that still are connected to server how
 
 
 #### UML Diagram
-
-
+![alt text](Images/Use%20Cases-Sharing.png)
