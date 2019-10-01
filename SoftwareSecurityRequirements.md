@@ -23,48 +23,49 @@ Since the majority of our focus will be client side since that is where the majo
 
 * Reveal Password - If the software was to Reveal the *Master Password* it would allow an attacker to unlock vault and steal its secrets. 
 
-   * Brute Force - One possible way to carry this out is to use a brute force attack on *Mater Password*. This is mitigated by ensuring chosen *Master Password* meets minimum complexity requirements and is considered a strong password which will protect against brute force attacks given a resonable amount of time. 
+   * Brute Force - One way to reveal the *Master Password* carry is to carry out a brute force attack against it. This is mitigated by ensuring chosen *Master Password* meets minimum complexity requirements and is considered strong which will protect against brute force attacks given a resonable amount of time. 
    
    * Another way an attacker may attempt to reveal *Master Password* is by gaining access to it in clear text form in memory or storage.  
-      * This is mitigated by ensuring once the *Master Password* is no longer needed by application, the memory space where it is located is promptly scrubbed. This must happen before said memeory is deallocated or released.
-      * The *Master Password* should never be stored in clear text at rest at in storage any time.
+      * This is mitigated by ensuring once the *Master Password* is no longer needed by application, the memory space where it is located is promptly scrubbed. This must happen before said memory space is deallocated.
+      * The *Master Password* should never be stored in clear text at rest in storage at any time.
 
-* Information Leakage - The secret manager should reveal any information about secret, such as length, identical to another secret, etc.... that would weaken the strength of the encrypted data
-	* No metadata on secret or even hashes of the Master Password should ever be stored at rest in storage or in vault.
-	
+* Information Leakage - The software should not reveal any information about secret, which infers that no *Master Password*  data, to include one way hashes of it, should ever be stored at rest in storage or in vault.
+
 * Network Evesdropping - The secret manager revealing clear text or information of password
 	* The software shold avoid sending the *Master Password* in transit over the network at any time
 
-
 #### Alignment of Security Requirements
 
-Bitwarden does have a *Master Password* strength validation tool however it is only suggestive, therefore an end user will be allowed to use a weak *Master Password*.
+* Bitwarden does have a *Master Password* strength validation tool however it is only suggestive, therefore an end user will be allowed to use a weak *Master Password*.
 
-Bitwarden claims to remove *Maaster Password* from memory when it is no longer needed in its clear text form. 
+* Bitwarden claims to remove *Maaster Password* from memory when it is no longer needed in its clear text form. 
 
-Bitwarden claims that *Master Password* never leaves client application and is never stored at rest or sent over network.
-
+* Bitwarden claims that *Master Password* never leaves client application and is never stored at rest or sent over network.
 
 #### UML Diagram
 
 ![alt text](Images/Use%20Cases-Master%20Password.png)
 
+
 ### 2. Manage Encryption Key 
 
 #### Use Cases
 
-* Derive Key Encryption Key - *Key Encryption Key* is then derived from *Master Password* when it is created using a strong encryption key derivation algorithm. As noted above, end user can update *Master Password* at any time, but that may not automatically result in the derivation of a new *Key Encryption Key*. End user must be given the option to derive a new encryption key with new master password if they feel encryption key may have been at risk of compromise.
+* Derive Key Encryption Key - *Key Encryption Key* is derived from *Master Password* when it is created using a strong encryption key derivation algorithm. As noted above, end user can update *Master Password* at any time, but that may not automatically result in the derivation of a new *Key Encryption Key*. However, end user must be given the option to derive a new encryption key with new master password if they feel encryption key may have been at risk of compromise.
 
 #### Misuse Cases / Security Requirements
 
-* Reveal Vault Keys - The *Key Encryptoin Key* is used to protect the private *vault key/s* which is in turn used to unlock the vault. 
+* Reveal Vault Keys - The *Key Encryption Key* is used to protect the private *Vault Keys* which are in turn used to decrypt secrets stored in the vault. 
 
-   * Brute Force - Given access to encrypted vault keys, an attacker may attempt to brute force *Master Password* and derive  *Key Encryption Key* in an attempt to reveal vault keys. Protection against this assumes a strong *Master Password* was chosen but furthe mitigates by ensuring a strong key derivation algorithm is used and is implented properly with use of good salt, seed and sufficent amount of iteratoins which ensures time to derive KEK is significant.   
-
-I
+   * Brute Force - Given access to encrypted vault keys, an attacker may attempt to brute force *Master Password* and derive  *Key Encryption Key* in an attempt to reveal vault keys. Protection against this assumes a strong *Master Password* was chosen but further mitigates by ensuring a strong key derivation algorithm is used and implemented properly. A good implmentation ensure use of good salt, seed and sufficent amount of iterations which in turn ensures the function takes a significant amount of time to derive the key.
+   
+* Reveal Key Encyrption Key - The software must take extra precautions to protect the KEK when it  
+   
 #### Alignment of Security Requirements
 
-Bitwarden the PBKDF2 SHA-256 algorithm for password derived encryption key algorithm. It uses open libraries and meet current industry standards for its implementation. (mention iteratoins, seed, salt)
+* Bitwarden uses the PBKDF2 SHA-256 algorithm for password encryption key derivatoin algorithm. It uses open libraries and meets current industry standards for its implementation. (mention iteratoins, seed, salt)
+
+* Bitwarden gives end user the option to derivce a new *Key Encryption Key* when a new *Mastor PAssword* is chosen.
 
 #### UML Diagram
 
@@ -73,36 +74,30 @@ Bitwarden the PBKDF2 SHA-256 algorithm for password derived encryption key algor
 ### 3. Manage Secrets
 
 #### Use Cases
-	Store Secret -> encrypt secret, sync vault
-	Retrieve Secret -> decrypt secret
-	View Secret |
+
+* Store Secret - End user has a secret that they want to encrypt and store in vault. A secret is considered to be any data and any corresponding metadata that an end user deems as sensitive and therefore wants to keep it private. This includes data such as passwords but can inlcude any type of sensitive data, that falles within the size limits, and attributes defined by the software. 
+
+* Retrieve Secret - End user has a secret that they need to decrypt from vault and view in clear text.
 
 #### Misuse Cases / Security Requirements
-	Steal Secret
-		Network Eves-dropping
-			Encrypt secret in-transit- encrypt secret client side, encrypt communication
-		reveal Clear text - scrub memory (before de-allocation) immediately after use, i.e auth 
-			or locked, not always possible due to libs, etc..
-			- never store at rest in clear - on disk, vault
-			- only encyrpt/decrypt one secret (and its metadata) at a time
-	
-	Leak Information
-		Encrypt all secret metadata
-		Ensure encrypted blobs do not match or reveal like data
+
+* Reveal Secret - The attacker is able to reveal the secret the end user wants to keep private.
 		
-	Corrupt Secret	
-		- only encrypt/decrypt one secret at a time
-		- Do no re-use old encryption key after changing
+   * Network Evesdropping - If the attacker has direct access to network commonucatoins made by the software, they may be able to reveal secret using packet payload data. This can be mitigated by ensuring all data sent over netowrk communications is encrypted and/or data is sent over secure TLS channel.
 
-n the event the encryption key is changed, the software should be prevent clients from using old encryption key to protect against data corruption. 
+   * Another way an attacker may attempt to reveal *Master Password* is by gaining access to it in clear text form in memory or storage.  
+      * This is mitigated by ensuring once the *Master Password* is no longer needed by application, the memory space where it is located is promptly scrubbed. This must happen before said memory space is deallocated.
+      * Secret date should never be stored in clear text when at rest. To limit unecesary wexposure the software should encrypt each secret individually prferreabley with unique encryptoin keys for each. 
 
+* Information Leakage - The software should not reveal any information about secret even when in ecnrypted form. For example, an attacker should not be able to compare encypted blobs and infer the two secrets are identical. 
 
+* Currupt Data - Softwware should proctect against either intentional or unintentional data curruptoin. If encryptoins key for secret should ever be changed the software must ensure that the old keys are not unintentional used to encrypt and updates going forward. Also only encrypting/decypting one secret at time helps to limit exposre should data be currupted.
+	
 #### Alignment of Security Requirements
 
+* Bitwarden encrypts all sensitive data client side and only connects to online service over a TLS socket.
 
-Bitwarden encrypts all sensitive data client side and only connects to online service over a TLS socket.
-
-Bitwarden will try to log out any clients that still are connected to server however it strongly recommended that the user log out and in of any clients when changing encryption key. Failure to do so may result in data corruption.
+* Bitwarden will try to log out any clients that still are connected to server however it strongly recommended that the user log out and in of any clients when changing encryption key. Failure to do so may result in data corruption.
 
 #### UML Diagram
 ![alt text](Images/Use%20Cases-Secrets.png)
