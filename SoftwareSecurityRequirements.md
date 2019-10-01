@@ -15,30 +15,35 @@ Since the majority of our focus will be client side since that is where the majo
 
 #### Use Cases
 
-When end user first creates their account, they are prompted to create a master password. Encryption key is then derived from master password using a strong encryption key derivation algorithm.
+* Create/Update Master Password - End user must choose a *Master Password* upon initial creation of vault. End user can update the *Master Password* at any time during lifetime of vault.
 
-End user can update master password at any time, but that will not automatically result in derivation of new encryption key. End user will be given the option to derive new encryption key with new master password if they feel encryption key may be at risk of compromise.
+* Sumbit to unlock vault - The *Master Password* is what is used to unlock the vault going forward and is only known by end user.
 
 #### Misuse Cases / Security Requirements
 
-The software should ensure all communication between client and server is encrypted to protect against network eavesdropping.
+* Reveal Password - If the software was to Reveal the *Master Password* it would allow an attacker to unlock vault and steal its secrets. 
 
-The software should proved password validation to ensure that chosen master password meets minimum complexity requirements and is considered a strong password which will protect against brute force attacks.
+   * Brute Force - One possible way to carry this out is to use a brute force attack on *Mater Password*. This is mitigated by ensuring chosen *Master Password* meets minimum complexity requirements and is considered a strong password which will protect against brute force attacks given a resonable amount of time. 
+   
+   * Another way an attacker may attempt to reveal *Master Password* is by gaining access to it in clear text form in memory or storage.  
+      * This is mitigated by ensuring once the *Master Password* is no longer needed by application, the memory space where it is located is promptly scrubbed. This must happen before said memeory is deallocated or released.
+      * The *Master Password* should never be stored in clear text at rest at in storage any time.
 
-The software should ensure that the algorithm used to derive encryption key from master password and its implementation are considered strong and have been public ally vetted to protect against reversal attacks.
-
-In the event the encryption key is changed, the software should be prevent clients from using old encryption key to protect against data corruption. 
+* Information Leakage - The secret manager should reveal any information about secret, such as length, identical to another secret, etc.... that would weaken the strength of the encrypted data
+	* No metadata on secret or even hashes of the Master Password should ever be stored at rest in storage or in vault.
+	
+* Network Evesdropping - The secret manager revealing clear text or information of password
+	* The software shold avoid sending the *Master Password* in transit over the network at any time
 
 
 #### Alignment of Security Requirements
 
-Bitwarden encrypts all sensitive data client side and only connects to online service over a TLS socket.
+Bitwarden does have a *Master Password* strength validation tool however it is only suggestive, therefore an end user will be allowed to use a weak *Master Password*.
 
-Bitwarden does have a password validation tool however it is only suggestive, therefore an end user will be allowed to use a weak master password.
+Bitwarden claims to remove *Maaster Password* from memory when it is no longer needed in its clear text form. 
 
-Bitwarden the PBKDF2 SHA-256 algorithm for password derived encryption key algorithm. It uses open libraries and meet current industry standards for its implementation.
+Bitwarden claims that *Master Password* never leaves client application and is never stored at rest or sent over network.
 
-Bitwarden will try to log out any clients that still are connected to server however it strongly recommended that the user log out and in of any clients when changing encryption key. Failure to do so may result in data corruption.
 
 #### UML Diagram
 
@@ -47,17 +52,19 @@ Bitwarden will try to log out any clients that still are connected to server how
 ### 2. Manage Encryption Key 
 
 #### Use Cases
-Derive Key
+
+* Derive Key Encryption Key - *Key Encryption Key* is then derived from *Master Password* when it is created using a strong encryption key derivation algorithm. As noted above, end user can update *Master Password* at any time, but that may not automatically result in the derivation of a new *Key Encryption Key*. End user must be given the option to derive a new encryption key with new master password if they feel encryption key may have been at risk of compromise.
 
 #### Misuse Cases / Security Requirements
-	Reveal Encryption Key/s
-		Brute Force	- use  strong KDF (slow hash) to derive encryption key
-			- ensure use random seed and unique salt for derivation function
-			- Ensure adequate number of iterations
 
+* Reveal Vault Keys - The *Key Encryptoin Key* is used to protect the private *vault key/s* which is in turn used to unlock the vault. 
 
+   * Brute Force - Given access to encrypted vault keys, an attacker may attempt to brute force *Master Password* and derive  *Key Encryption Key* in an attempt to reveal vault keys. Protection against this assumes a strong *Master Password* was chosen but furthe mitigates by ensuring a strong key derivation algorithm is used and is implented properly with use of good salt, seed and sufficent amount of iteratoins which ensures time to derive KEK is significant.   
+
+I
 #### Alignment of Security Requirements
 
+Bitwarden the PBKDF2 SHA-256 algorithm for password derived encryption key algorithm. It uses open libraries and meet current industry standards for its implementation. (mention iteratoins, seed, salt)
 
 #### UML Diagram
 
@@ -87,8 +94,15 @@ Derive Key
 		- only encrypt/decrypt one secret at a time
 		- Do no re-use old encryption key after changing
 
+n the event the encryption key is changed, the software should be prevent clients from using old encryption key to protect against data corruption. 
+
+
 #### Alignment of Security Requirements
 
+
+Bitwarden encrypts all sensitive data client side and only connects to online service over a TLS socket.
+
+Bitwarden will try to log out any clients that still are connected to server however it strongly recommended that the user log out and in of any clients when changing encryption key. Failure to do so may result in data corruption.
 
 #### UML Diagram
 ![alt text](Images/Use%20Cases-Secrets.png)
@@ -106,6 +120,7 @@ Attack Goals: (In addition to those defined in secrets)
 		Replay Attack
 			Prevent Reuse of passwords across multiple accounts	Share Secret - assign user to share secret with
 
+n the event the encryption key is changed, the software should be prevent clients from using old encryption key to protect against data corruption. 
 
 
 #### Alignment of Security Requirements
