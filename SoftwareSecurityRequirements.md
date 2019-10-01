@@ -65,7 +65,7 @@ Since the majority of our focus will be client side since that is where the majo
 
 * Bitwarden uses the PBKDF2 SHA-256 algorithm for password encryption key derivatoin algorithm. It uses open libraries and meets current industry standards for its implementation. (mention iteratoins, seed, salt)
 
-* Bitwarden gives end user the option to derivce a new *Key Encryption Key* when a new *Mastor PAssword* is chosen.
+* Bitwarden gives end user the option to derivce a new *Key Encryption Key* when a new *Mastor Password* is chosen.
 
 #### UML Diagram
 
@@ -75,19 +75,19 @@ Since the majority of our focus will be client side since that is where the majo
 
 #### Use Cases
 
-* Store Secret - End user has a secret that they want to encrypt and store in vault. A secret is considered to be any data and any corresponding metadata that an end user deems as sensitive and therefore wants to keep it private. This includes data such as passwords but can inlcude any type of sensitive data, that falles within the size limits, and attributes defined by the software. 
+* Store Secret - End user has a *Secret* that they want to encrypt and store in vault. A *Secret* is considered to be any data and any corresponding metadata that an end user deems as sensitive and therefore wants to keep it private. This includes data such as passwords, but can include any type of sensitive data, that falls within the size limits, and attributes defined by the software. 
 
-* Retrieve Secret - End user has a secret that they need to decrypt from vault and view in clear text.
+* Retrieve Secret - End user has a *Secret* that they need to decrypt from vault and view in clear text.
 
 #### Misuse Cases / Security Requirements
 
-* Reveal Secret - The attacker is able to reveal the secret the end user wants to keep private.
+* Reveal Secret - The attacker is able to reveal the *Secret* the end user wants to keep private.
 		
-   * Network Evesdropping - If the attacker has direct access to network commonucations made by the software, they may be able to reveal secret using packet payload data. This can be mitigated by ensuring all data sent over network communications is encrypted and/or data is sent over secure TLS channel.
+   * Network Evesdropping - If the attacker has direct access to network communications made by the software, they may be able to reveal secret using packet payload data. This can be mitigated by ensuring all data sent over network communications is encrypted and/or data is sent over secure TLS channel.
 
-   * Another way an attacker may attempt to reveal *Master Password* is by gaining access to it in clear text form in memory or storage.  
-      * This is mitigated by ensuring once the *Master Password* is no longer needed by application, the memory space where it is located is promptly scrubbed. This must happen before said memory space is deallocated.
-      * Secret date should never be stored in clear text when at rest. To limit unecesary wexposure the software should encrypt each secret individually prferreabley with unique encryption keys for each. 
+   * Another way an attacker may attempt to reveal a *Secret* is by gaining access to it in clear text form in memory or storage.  
+      * This is mitigated by ensuring once a *Secret* is no longer needed by application, the memory space where it is located is promptly scrubbed. This must happen before said memory space is deallocated.
+      * Secret data should never be stored in clear text when at rest. To limit unecesary exposure the software should encrypt each secret individually prferreabley with unique encryption keys for each. 
 
 * Information Leakage - The software should not reveal any information about secret even when in ecnrypted form. For example, an attacker should not be able to compare encypted blobs and infer the two secrets are identical. 
 
