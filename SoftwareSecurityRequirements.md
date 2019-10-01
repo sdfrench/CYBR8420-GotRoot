@@ -47,7 +47,7 @@ Since the majority of our focus will be client side since that is where the majo
 ![alt text](Images/Use%20Cases-Master%20Password.png)
 
 
-### 2. Manage Encryption Key 
+### 2. Manage Key Encryption Key 
 
 #### Use Cases
 
@@ -83,15 +83,15 @@ Since the majority of our focus will be client side since that is where the majo
 
 * Reveal Secret - The attacker is able to reveal the secret the end user wants to keep private.
 		
-   * Network Evesdropping - If the attacker has direct access to network commonucatoins made by the software, they may be able to reveal secret using packet payload data. This can be mitigated by ensuring all data sent over netowrk communications is encrypted and/or data is sent over secure TLS channel.
+   * Network Evesdropping - If the attacker has direct access to network commonucations made by the software, they may be able to reveal secret using packet payload data. This can be mitigated by ensuring all data sent over network communications is encrypted and/or data is sent over secure TLS channel.
 
    * Another way an attacker may attempt to reveal *Master Password* is by gaining access to it in clear text form in memory or storage.  
       * This is mitigated by ensuring once the *Master Password* is no longer needed by application, the memory space where it is located is promptly scrubbed. This must happen before said memory space is deallocated.
-      * Secret date should never be stored in clear text when at rest. To limit unecesary wexposure the software should encrypt each secret individually prferreabley with unique encryptoin keys for each. 
+      * Secret date should never be stored in clear text when at rest. To limit unecesary wexposure the software should encrypt each secret individually prferreabley with unique encryption keys for each. 
 
 * Information Leakage - The software should not reveal any information about secret even when in ecnrypted form. For example, an attacker should not be able to compare encypted blobs and infer the two secrets are identical. 
 
-* Currupt Data - Softwware should proctect against either intentional or unintentional data curruptoin. If encryptoins key for secret should ever be changed the software must ensure that the old keys are not unintentional used to encrypt and updates going forward. Also only encrypting/decypting one secret at time helps to limit exposre should data be currupted.
+* Corrupt Data - Softwware should protect against intentional (attacker) or unintentional (end user) data corruption. For instance if encryption keys should ever be changed, the software must ensure that the old keys are not unintentionally used to encrypt and updates going forward. Also only encrypting/decypting one secret at a time helps to limit exposure should data be corrupted.
 	
 #### Alignment of Security Requirements
 
@@ -115,7 +115,7 @@ Attack Goals: (In addition to those defined in secrets)
 		Replay Attack
 			Prevent Reuse of passwords across multiple accounts	Share Secret - assign user to share secret with
 
-n the event the encryption key is changed, the software should be prevent clients from using old encryption key to protect against data corruption. 
+* In the event the encryption key is changed, the software should be prevent clients from using old encryption key to protect against data corruption. 
 
 
 #### Alignment of Security Requirements
