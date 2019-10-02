@@ -9,47 +9,57 @@ Since the majority of our focus will be client side that is where the majority o
 
 ## Essential Data Flows: 
 
-### 1. Manage Master Password 
+
+### 3. Manage Secrets#### Backstory
+
+This data flow concerns the management of the *Master Password.* The *Master Password* is the password that is used to ultimately "unlock" a user's vault enabling them to gain access to the *Secrets.*  A *Secret* is considered to be any data, and corresponding metadata, that an end user deems as sensitive and therefore wants to keep private. This includes data such as passwords, but can include any type of sensitive data, as long as it falls within the limitations of the *Secrets Manager.*
 
 #### Use Cases
 
-* Create/Update Master Password - End user must choose a *Master Password* upon initial creation of vault. End user can update the *Master Password* at any time during lifetime of vault.
+* Create/Update Master Password - End user must choose a *Master Password* upon initial creation of vault. End user can update the *Master Password* at any time after during the lifetime of vault.
 
-* Submit to unlock vault - The *Master Password* is what is used to unlock the vault going forward and is only known by end user.
+* Submit to unlock vault - The *Master Password* is submitted to application to unlock the vault going forward and is only known by end user.
 
 #### Misuse Cases / Security Requirements
 
-* Reveal Password - Revealing the *Master Password* would allow an attacker to unlock vault and steal its *Secrets*. 
+* Reveal Password - Revealing the *Master Password* would allow an attacker to unlock vault and reveal its *Secrets* to an unauthorized user. 
 
-   * Brute Force - One way to reveal the *Master Password* is to carry out a brute force attack against it. This is mitigated by ensuring chosen *Master Password* meets minimum complexity requirements and is considered strong. This will protect against brute force attacks discovering *Master Password* in a reasonable amount of time. 
+   * Brute Force - One way to reveal the *Master Password* is to carry out a brute force attack against it. This is mitigated by ensuring chosen *Master Password* meets minimum complexity requirements and is considered strong. This will protect against brute force attacks from discovering *Master Password* in a reasonable amount of time. 
    
-   * Obtain Clear Text -Another way an attacker may attempt to reveal *Master Password* is by gaining access to it in clear text form in memory or storage.  
-      * This is mitigated by ensuring once the *Master Password* is no longer needed by application, the memory space where it is located is promptly scrubbed. This must happen before said memory space is deallocated.
+   * Obtain Clear Text - Another way an attacker may attempt to reveal *Master Password* is by gaining access to it in clear text form in either memory or storage.  
+      * Sanitize Memory - One solution mitigate access to clear text is to ensure that once the *Master Password* is no longer needed by application, the memory space where it is located is promptly scrubbed then deallocated if applicable. This must happen before said memory space is deallocated if deallocation call does not guarantee scrubbing of memory prior to releasing memory.
       * The *Master Password* should never be stored in clear text at rest in storage at any time.
 
-* Information Leakage - The software should not reveal any information about *Secret*, which infers that no *Master Password*  data, to include one way hashes of it, should ever be stored at rest in storage or in vault.
+* Information Leakage - The software should not reveal any information about *Secret.* For example, hashes or encrypted blobs of *Master Password* must not Leak any information about it, such as its length.
 
 * Network Eavesdrop - The secret manager revealing clear text or information of password
-	* The software should avoid sending the *Master Password* in transit over the network at any time
+	* The software should avoid sending the *Master Password* in transit over the network in clear text at any time
 
 #### Alignment of Security Requirements
 
 * Bitwarden does have a *Master Password* strength validation tool however it is only suggestive, therefore an end user will be allowed to use a weak *Master Password*.
 
-* Bitwarden claims to remove *Master Password* from memory when it is no longer needed in its clear text form. 
+* Bitwarden [states](https://help.bitwarden.com/article/forgot-master-password/) *Master Password* is securely encrypted and cannot be reverse engineered by Bitwarden team. 
 
-* Bitwarden claims that *Master Password* never leaves client application and is never stored at rest or sent over network.
+* Btiwarden [states](https://help.bitwarden.com/article/password-salt-hash/) claims to use one way hashes with proper salt to prevent someone from reverse engineering *Master Password.*
+
+* Bitwarden [states](https://help.bitwarden.com/article/can-bitwarden-see-my-passwords/) that *Master Password* clear text never leaves client side application.
+
 
 #### UML Diagram
 
 ![alt text](Images/Use%20Cases-Master%20Password.png)
 
 
-### 2. Manage Key Encryption Key 
+### 2. Manage Key Encryption Key
+
+#### Backstory
+
+This data flow concerns the management of the *Key Encryption Key.*  The *Key Encryption Key* is derived from *Master Password* and is used to encrypt end user's private key which in turn is used decrypt vault keys.  
 
 #### Use Cases
 
-* Derive Key Encryption Key - *Key Encryption Key* is derived from *Master Password* when it is created using a strong encryption key derivation algorithm. As noted above, end user can update *Master Password* at any time, but that may not automatically result in the derivation of a new *Key Encryption Key*. However, end user must be given the option to derive a new encryption key with new *Master Password* if they feel encryption key may have been at risk of compromise.
+* Derive Key Encryption Key - *Key Encryption Key* is derived from *Master Password* when it is created using a strong encryption key derivation algorithm. As noted above, end user can update *Master Password* at any time, but that may not automatically result in the derivation of a new *Key Encryption Key*. However, end user must be given the option to derive a new encryption key in the event *Master Password* or vault data has been compromised.
 
 #### Misuse Cases / Security Requirements
 
@@ -61,15 +71,14 @@ Since the majority of our focus will be client side that is where the majority o
    
 #### Alignment of Security Requirements
 
-* Bitwarden uses the PBKDF2 SHA-256 algorithm for password encryption key derivation algorithm. It uses open libraries and meets current industry standards for its implementation. (mention iterations, seed, salt)
+* Bitwarden [states](https://help.bitwarden.com/article/what-encryption-is-used/) the PBKDF2 SHA-256 algorithm for password encryption key derivation algorithm. It uses open libraries and meets current industry standards for its implementation. (Use of sufficient iterations, seed, salt)
 
-* Bitwarden gives end user the option to derive a new *Key Encryption Key* when a new *Master Password* is chosen.
+* Bitwarden [states](https://help.bitwarden.com/article/change-your-master-password/) that end user the option to derive a new *Key Encryption Key* when a new *Master Password* is chosen.
 
 #### UML Diagram
 
 ![alt text](Images/Use%20Cases-Key%20Encryption%20Key.png)
 
-### 3. Manage Secrets
 
 #### Use Cases
 
