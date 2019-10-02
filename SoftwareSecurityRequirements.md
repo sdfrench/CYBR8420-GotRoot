@@ -132,7 +132,7 @@ This data flow concerns the management of *Password.*  When we use *Password* he
 
    * Brute force Attack - Attacker is able to reveal end users password using brute force techniques in a relatively short period of time. This mitigate by ensuing a strong password is used by meeting minimum complexity requirements. 
 		
-   * Replay Attack - An attacker is able to obtain credentials that were disclose as the result of a breach, but because the end user shares the same credentials across multiple sites, the attacker is able to gain access to another site or application unrelated to original breach. This is easily mitigated by not sharing or daisy chaining credentials. 
+   * Replay Attack - An attacker is able to obtain credentials that were publically disclosed from a prior breace. If the end user shares the same credentials that were disclosed across multiple sites, the attacker may able to gain access to another site or application unrelated to original breach. This is easily mitigated by not sharing or daisy chaining credentials. 
  
 #### Alignment of Security Requirements
 
@@ -145,7 +145,7 @@ This data flow concerns the management of *Password.*  When we use *Password* he
 
 #### Backstory
 
-This data flow concerns the management of the sharing of *Secrets.*  In this case, a *Secret* owner can share a *secret* or a collectoin of *secrets* with another user. In addition to that the *Secret* ownner and assign Read-Only (RO) or Read-Write (RW) access to the shared *Secret* or collection. 
+This data flow concerns the management of the sharing of *Secrets.*  In this case, a *Secret* owner can share a *Secret* or a collection of *secrets* with another user. In addition to that the *Secret* ownner and assign Read-Only (RO) or Read-Write (RW) access to the shared *Secret* or collection. 
 
 #### Use Cases
   
@@ -165,7 +165,7 @@ This data flow concerns the management of the sharing of *Secrets.*  In this cas
 
 #### Alignment of Security Requirements
 
-Bitwarden uses [collectoins](https://help.bitwarden.com/article/collections/) for manaaging shares to groups of *secrets*. Each indivual user to the share can be assigned RO/RW permissions as appropiate. Users with RW acccess to a collectoin can add, edit, or delete any Secret item contained within it.
+Bitwarden uses [collections](https://help.bitwarden.com/article/collections/) for managing shares to groups of *secrets*. Each indivual user to the share can be assigned RO/RW permissions as appropiate. Users with RW acccess to a collection can add, edit, or delete any Secret item contained within it.
 
 #### UML Diagram
 
