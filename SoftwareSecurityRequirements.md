@@ -4,9 +4,9 @@
 
 NOTE: Scope is open for discussion 
 
-Bitwarden is an open-source online password management service. This software has earned a good reputation for security as all sensitive information is encrypted client side before it is sent to online vault and is recoverable by only using the master password supplied by the end user. In other words, if the end user forgets their master password, the items encrypted in the vault will not be recoverable. This software supports a multitude of client applications and devices that all can be used to sync to the online vault. Although the software is free, some features  are only available with premium accounts and/or family/commercial plans. Due to price, security and features like 2 factor authentication., data sharing, etc.. this software has appeal to both the individual user as well as commercial businesses as well. 
+Bitwarden is an open-source online password management service. This software has earned a good reputation for security as all sensitive information is encrypted client side before it is sent to an online vault and is recoverable by only using the master password supplied by the end user. In other words, if the end user forgets their master password, the items encrypted in the vault will not be recoverable. This software supports a multitude of client applications and devices that all can be used to sync to the online vault. Although the software is free, some features  are only available with premium accounts and/or family/commercial plans. Due to price, security and features like 2 factor authentication, data sharing, etc.. this software has appeal to both the individual user as well as commercial businesses as well. 
 
-Since the majority of our focus will be client side since that is where the majority of the security features are implemented. As mentioned above, this software supports several platforms and we will be primarily focused on the command line client but make look at desktop and browser extensions if we feel there may be something unique to those clients worth pursuing. Mobile devices will be outside the scope of this evaluation however. 
+Since the majority of our focus will be client side that is where the majority of the security features are implemented. As mentioned above, this software supports several platforms and we will be primarily focused on the command line client but make look at desktop and browser extensions if we feel there may be something unique to those clients worth pursuing. Mobile devices will be outside the scope of this evaluation however. 
 
 
 ## Essential Data Flows: 
@@ -32,7 +32,7 @@ Since the majority of our focus will be client side since that is where the majo
 * Information Leakage - The software should not reveal any information about secret, which infers that no *Master Password*  data, to include one way hashes of it, should ever be stored at rest in storage or in vault.
 
 * Network Evesdropping - The secret manager revealing clear text or information of password
-	* The software shold avoid sending the *Master Password* in transit over the network at any time
+	* The software should avoid sending the *Master Password* in transit over the network at any time
 
 #### Alignment of Security Requirements
 
@@ -57,13 +57,13 @@ Since the majority of our focus will be client side since that is where the majo
 
 * Reveal Vault Keys - The *Key Encryption Key* is used to protect the private *Vault Keys* which are in turn used to decrypt secrets stored in the vault. 
 
-   * Brute Force - Given access to encrypted vault keys, an attacker may attempt to brute force *Master Password* and derive  *Key Encryption Key* in an attempt to reveal vault keys. Protection against this assumes a strong *Master Password* was chosen but further mitigates by ensuring a strong key derivation algorithm is used and implemented properly. A good implmentation ensure use of good salt, seed and sufficent amount of iterations which in turn ensures the function takes a significant amount of time to derive the key.
+   * Brute Force - Given access to encrypted vault keys, an attacker may attempt to brute force *Master Password* and derive  *Key Encryption Key* in an attempt to reveal vault keys. Protection against this assumes a strong *Master Password* was chosen but further mitigates by ensuring a strong key derivation algorithm is used and implemented properly. A good implementation ensure use of good salt, seed and sufficent amount of iterations which in turn ensures the function takes a significant amount of time to derive the key.
    
-* Reveal Key Encyrption Key - The software must take extra precautions to protect the KEK when it  
+* Reveal Key Encryption Key - The software must take extra precautions to protect the KEK when it is revealed.
    
 #### Alignment of Security Requirements
 
-* Bitwarden uses the PBKDF2 SHA-256 algorithm for password encryption key derivatoin algorithm. It uses open libraries and meets current industry standards for its implementation. (mention iteratoins, seed, salt)
+* Bitwarden uses the PBKDF2 SHA-256 algorithm for password encryption key derivatoin algorithm. It uses open libraries and meets current industry standards for its implementation. (mention iterations, seed, salt)
 
 * Bitwarden gives end user the option to derivce a new *Key Encryption Key* when a new *Mastor Password* is chosen.
 
@@ -87,17 +87,17 @@ Since the majority of our focus will be client side since that is where the majo
 
    * Another way an attacker may attempt to reveal a *Secret* is by gaining access to it in clear text form in memory or storage.  
       * This is mitigated by ensuring once a *Secret* is no longer needed by application, the memory space where it is located is promptly scrubbed. This must happen before said memory space is deallocated.
-      * Secret data should never be stored in clear text when at rest. To limit unecesary exposure the software should encrypt each secret individually prferreabley with unique encryption keys for each. 
+      * Secret data should never be stored in clear text when at rest. To limit unnecessary exposure the software should encrypt each secret individually preferably with unique encryption keys for each. 
 
-* Information Leakage - The software should not reveal any information about secret even when in ecnrypted form. For example, an attacker should not be able to compare encypted blobs and infer the two secrets are identical. 
+* Information Leakage - The software should not reveal any information about secret even when in encrypted form. For example, an attacker should not be able to compare encrypted blobs and infer the two secrets are identical. 
 
-* Corrupt Data - Softwware should protect against intentional (attacker) or unintentional (end user) data corruption. For instance if encryption keys should ever be changed, the software must ensure that the old keys are not unintentionally used to encrypt and updates going forward. Also only encrypting/decypting one secret at a time helps to limit exposure should data be corrupted.
+* Corrupt Data - Software should protect against intentional (attacker) or unintentional (end user) data corruption. For instance if encryption keys should ever be changed, the software must ensure that the old keys are not unintentionally used to encrypt and updates going forward. Also only encrypting/decrypting one secret at a time helps to limit exposure should data be corrupted.
 	
 #### Alignment of Security Requirements
 
 * Bitwarden encrypts all sensitive data client side and only connects to online service over a TLS socket.
 
-* Bitwarden will try to log out any clients that still are connected to server however it strongly recommended that the user log out and in of any clients when changing encryption key. Failure to do so may result in data corruption.
+* Bitwarden will try to log out any clients that are still connected to server. However it is strongly recommended that the user log out and in of any clients when changing encryption key. Failure to do so may result in data corruption.
 
 #### UML Diagram
 ![alt text](Images/Use%20Cases-Secrets.png)
@@ -106,7 +106,7 @@ Since the majority of our focus will be client side since that is where the majo
 
 #### Use Cases
 
-* Password Generation - When we use *Password* here we are referring to *Passwords* that are for third party sites or applications. Most Security Managers are often referred to as Password Managers even though they are not designed solely for managing *Passwords.*  Having said that, this is still a very important use caae for modern secret managers as good password generation is an effective way to ensure the end user does not egage in unsage practices such as sharing passwords and/or using weak passwords.  (why we dont discuss form fill techniques)
+* Password Generation - When we use *Password* here we are referring to *Passwords* that are for third party sites or applications. Most Security Managers are often referred to as Password Managers even though they are not designed solely for managing *Passwords.*  Having said that, this is still a very important use case for modern secret managers as good password generation is an effective way to ensure the end user does not engage in unsage practices such as sharing passwords and/or using weak passwords.  (why we dont discuss form fill techniques)
 
 #### Misuse Cases / Security Requirements
 
@@ -114,11 +114,11 @@ Since the majority of our focus will be client side since that is where the majo
 
    * Brute force Attack - Attacker is able to reveal end users password using brute force techniques in a relatively short period of time. This mitigate by ensuing a strong password is used by meeting minimum complexity requirements. 
 		
-   * Replay Attack - An attacker is able to obtain credentials that were disclose as the result of a breach, but becasue the end user shares the same credentials accross multiple sites, the attacker is able to gain access to another site or application unrelated to original breach. This is easliy mitigate by not shraing or daisy chaiining credentials. 
+   * Replay Attack - An attacker is able to obtain credentials that were disclose as the result of a breach, but because the end user shares the same credentials accross multiple sites, the attacker is able to gain access to another site or application unrelated to original breach. This is easily mitigated by not sharing or daisy chaining credentials. 
  
 #### Alignment of Security Requirements
 
-* Bitwarden does have a *Password* generation tool that will generate a random password based on end user's miniimum requiremnts, however the complexity of the password generated is completely dependant on those minimum requirements and may allow what is considered to be a weak password to be generatd. 
+* Bitwarden does have a *Password* generation tool that will generate a random password based on end user's miniimum requirements, however the complexity of the password generated is completely dependant on those minimum requirements and may allow what is considered to be a weak password to be generatd. 
 
 #### UML Diagram
 ![alt text](Images/Use%20Cases-Passwords.png)
@@ -129,15 +129,15 @@ Since the majority of our focus will be client side since that is where the majo
   
 * Share Secret - Allow end to share a *Secret* with another user and assign RO or RW permissions for the object and user pair. Owner of object can change permissions or revoke share at any time. *Secret* can only be managed and deleted by *Secret* owner. 
 
-* Access Shared Secret - This is refeering to accessing a shared *Secret* when the end user was not the *Secrets* owner. End user may have RW or RO privileges granted to them by *Secret* object owner.
+* Access Shared Secret - This is refering to accessing a shared *Secret* when the end user was not the *Secrets* owner. End user may have RW or RO privileges granted to them by *Secret* object owner.
 
 #### Misuse Cases / Security Requirements
 
 * Reveal Secret - The attacker is able to reveal the *Secret* the owner wants to keep private.
 		
-   * Unauthorized Access - Attacker is able to gain access to shared secret that was not authorized by *Secret* owner. This can be mitigated by using assymetric encryption where the *Secret* is encrypted with an authorized user's public key. Only the authorized user is able to decrypt the secret using their private key. 
+   * Unauthorized Access - Attacker is able to gain access to shared secret that was not authorized by *Secret* owner. This can be mitigated by using asymetric encryption where the *Secret* is encrypted with an authorized user's public key. Only the authorized user is able to decrypt the secret using their private key. 
    
-* Currupt Data - The attacker is able to alter the *Secret* rendering it useless to the owner. 
+* Corrupt Data - The attacker is able to alter the *Secret* rendering it useless to the owner. 
 
    * Unauthorized Change - Attacker is able to alter *Secret* without proper authorizatoion.  This is mitigated by ensuring the software will not allow changes to a secret unless they have RW authorization. The software must ensure the RO/RW flag for each shared *Secret* is not subject to tampering. 
 
