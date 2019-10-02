@@ -10,7 +10,7 @@ Since the majority of our focus will be client side that is where the majority o
 ## Essential Data Flows: 
 
 
-### 3. Manage Secrets
+### 3. Manage Master Password
 
 #### Backstory
 
@@ -81,6 +81,7 @@ This data flow concerns the management of the *Key Encryption Key.*  The *Key En
 
 ![alt text](Images/Use%20Cases-Key%20Encryption%20Key.png)
 
+### 3. Manage Secrets
 
 #### Use Cases
 
