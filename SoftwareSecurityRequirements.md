@@ -85,7 +85,7 @@ This data flow concerns the management of the *Key Encryption Key.*  The *Key En
 
 #### Backstory
 
-This data flow concerns the management of *Secrets.*  A *Secret* is considered to be any data, and its corresponding metadata, that an end user deems as sensitive and therefore wants to keep private. This includes data such as passwords, but can include any type of sensitive data, as long as it falls within the limitations of the *Secrets Manager.*
+This data flow concerns the management of *Secrets.*  A *Secret* is considered to be any data, and its corresponding metadata, that an end user deems as sensitive and therefore wants to keep private. This includes data such as passwords, but can include any type of sensitive data, as long as it falls within the limitations of the *Secrets Manager* application.
 
 #### Use Cases
 
@@ -124,7 +124,7 @@ This data flow concerns the management of *Password.*  When we use *Password* he
 
 #### Use Cases
 
-* Password Generation - End user has a *Password* randomly created for them that also meets minimum complexity requirements set by the end use.
+* Password Generation - End user has a *Password* randomly created for them that also meets minimum complexity requirements set by the end user.
 
 #### Misuse Cases / Security Requirements
 
@@ -145,7 +145,7 @@ This data flow concerns the management of *Password.*  When we use *Password* he
 
 #### Backstory
 
-This data flow concerns the management of the sharing of *Secrets.*  In this case, a *Secret* owner can share a *Secret* or a collection of *secrets* with another user. In addition to that the *Secret* ownner and assign Read-Only (RO) or Read-Write (RW) access to the shared *Secret* or collection. 
+This data flow concerns the management of the sharing of *Secrets.*  In this case, a *Secret* owner can share a *Secret* or a collection of *secrets* with another user. In addition to that the *Secret* owner and assign Read-Only (RO) or Read-Write (RW) access to the shared *Secret* or collection. 
 
 #### Use Cases
   
@@ -171,7 +171,7 @@ Bitwarden uses [collections](https://help.bitwarden.com/article/collections/) fo
 
 ![alt text](Images/Use%20Cases-Sharing.png)
 
-## Security Related Configuration and Installation Issues.
+## Security Related Configuration and Installation Issues
 
 ## Project Task Assignments and Collaborations 
 
