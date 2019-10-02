@@ -2,7 +2,7 @@
   PenTesting will be performed in a [virtual environment](https://github.com/caseyschmitz/CYBR8420-GotRoot/blob/master/TestBed-8420.jpg).
   
 # Virtual Test Bed Host
-  VMWare Workstation 15 Pro (v14.1.1)
+  VMWare Workstation 15 Pro (v15.1.0)
 
 # Internal VNet Firewall
   pfSense (v2.4.4)
