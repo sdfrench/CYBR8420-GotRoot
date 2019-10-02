@@ -10,7 +10,9 @@ Since the majority of our focus will be client side that is where the majority o
 ## Essential Data Flows: 
 
 
-### 3. Manage Secrets#### Backstory
+### 3. Manage Secrets
+
+#### Backstory
 
 This data flow concerns the management of the *Master Password.* The *Master Password* is the password that is used to ultimately "unlock" a user's vault enabling them to gain access to the *Secrets.*  A *Secret* is considered to be any data, and corresponding metadata, that an end user deems as sensitive and therefore wants to keep private. This includes data such as passwords, but can include any type of sensitive data, as long as it falls within the limitations of the *Secrets Manager.*
 
@@ -71,9 +73,9 @@ This data flow concerns the management of the *Key Encryption Key.*  The *Key En
    
 #### Alignment of Security Requirements
 
-* Bitwarden [states](https://help.bitwarden.com/article/what-encryption-is-used/) the PBKDF2 SHA-256 algorithm for password encryption key derivation algorithm. It uses open libraries and meets current industry standards for its implementation. (Use of sufficient iterations, seed, salt)
+* Bitwarden [states](https://help.bitwarden.com/article/what-encryption-is-used/) that it uses the PBKDF2 SHA-256 algorithm for its password encryption key derivation algorithm. It uses open libraries and meets current industry standards for its implementation. (Use of sufficient iterations, seed, and salt)
 
-* Bitwarden [states](https://help.bitwarden.com/article/change-your-master-password/) that end user the option to derive a new *Key Encryption Key* when a new *Master Password* is chosen.
+* Bitwarden [states](https://help.bitwarden.com/article/change-your-master-password/) that the end user has the option to derive a new *Key Encryption Key* when a new *Master Password* is chosen.
 
 #### UML Diagram
 
@@ -90,7 +92,7 @@ This data flow concerns the management of the *Key Encryption Key.*  The *Key En
 
 * Reveal Secret - The attacker is able to reveal the *Secret* the end user wants to keep private.
 		
-   * Network Evesdrop- If the attacker has direct access to network communications made by the software, they may be able to reveal secret using packet payload data. This can be mitigated by ensuring all data sent over network communications is encrypted and/or data is sent over secure TLS channel.
+   * Network Evesdrop - If the attacker has direct access to network communications made by the software, they may be able to reveal secret using packet payload data. This can be mitigated by ensuring all data sent over network communications is encrypted and/or data is sent over secure TLS channel.
 
    * Another way an attacker may attempt to reveal a *Secret* is by gaining access to it in clear text form in memory or storage.  
       * This is mitigated by ensuring once a *Secret* is no longer needed by application, the memory space where it is located is promptly scrubbed. This must happen before said memory space is deallocated.
