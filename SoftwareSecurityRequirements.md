@@ -118,9 +118,12 @@ This data flow concerns the management of *Secrets.*  A *Secret* is considered t
 
 ### 4. Manage Passwords (Subset of Secrets) 
 
+#### Backstory
+
+This data flow concerns the management of *Password.*  When we use *Password* here we are referring to *Passwords* that are use for authenicating to third party sites or applications. Secrets Managers and Password Managers are oftern used interchangebly although most modern managers are designed to secure much more than just credentials. Having said that, managing *Passwords* is still a very important use case for modern secret managers as good password generation is an effective way to ensure the end user does not engage in unsafe practices such as sharing and/or using weak *Passwords*.  
 #### Use Cases
 
-* Password Generation - When we use *Password* here we are referring to *Passwords* that are for third party sites or applications. Most Security Managers are often referred to as Password Managers even though they are not designed solely for managing *Passwords.*  Having said that, this is still a very important use case for modern secret managers as good password generation is an effective way to ensure the end user does not engage in unsage practices such as sharing passwords and/or using weak passwords.  (why we dont discuss form fill techniques)
+* Password Generation - End user has a *Password* randomly created for them that also meets minimum complexity requirements set by the end use.
 
 #### Misuse Cases / Security Requirements
 
