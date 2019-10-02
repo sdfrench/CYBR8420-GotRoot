@@ -105,21 +105,20 @@ Since the majority of our focus will be client side since that is where the majo
 ### 4. Manage Passwords (Subset of Secrets) 
 
 #### Use Cases
-Password Generation
+
+* Password Generation - When we use *Password* here we are referring to *Passwords* that are for third party sites or applications. Most Security Managers are often referred to as Password Managers even though they are not designed solely for managing *Passwords.*  Having said that, this is still a very important use caae for modern secret managers as good password generation is an effective way to ensure the end user does not egage in unsage practices such as sharing passwords and/or using weak passwords.  (why we dont discuss form fill techniques)
 
 #### Misuse Cases / Security Requirements
-Attack Goals: (In addition to those defined in secrets)
-	Steal Password
-		Brute force Attack
-			Generate Password - ensure password strength/complexit meets min. requirements
-		Replay Attack
-			Prevent Reuse of passwords across multiple accounts	Share Secret - assign user to share secret with
 
-* In the event the encryption key is changed, the software should be prevent clients from using old encryption key to protect against data corruption. 
+* Reveal Password -  An attacker is able to reveal the *Password* the end user wants to keep private.
 
-
+   * Brute force Attack - Attacker is able to reveal end users password using brute force techniques in a relatively short period of time. This mitigate by ensuing a strong password is used by meeting minimum complexity requirements. 
+		
+   * Replay Attack - An attacker is able to obtain credentials that were disclose as the result of a breach, but becasue the end user shares the same credentials accross multiple sites, the attacker is able to gain access to another site or application unrelated to original breach. This is easliy mitigate by not shraing or daisy chaiining credentials. 
+ 
 #### Alignment of Security Requirements
 
+* Bitwarden does have a *Password* generation tool that will generate a random password based on end user's miniimum requiremnts, however the complexity of the password generated is completely dependant on those minimum requirements and may allow what is considered to be a weak password to be generatd. 
 
 #### UML Diagram
 ![alt text](Images/Use%20Cases-Passwords.png)
@@ -127,19 +126,23 @@ Attack Goals: (In addition to those defined in secrets)
 ### 5. Manage Sharing 
 
 #### Use Cases
-  Share Secret - assign user, assign perms, remove user
-	Access Shared secret
+  
+* Share Secret - Allow end to share a *Secret* with another user and assign RO or RW permissions for the object and user pair. Owner of object can change permissions or revoke share at any time. *Secret* can only be managed and deleted by *Secret* owner. 
+
+* Access Shared Secret - This is refeering to accessing a shared *Secret* when the end user was not the *Secrets* owner. End user may have RW or RO privileges granted to them by *Secret* object owner.
 
 #### Misuse Cases / Security Requirements
-	Steal Secret 
-		bypass share - secret is encrypted with user pub key
-	Change Secret (Integrity)
-		Unauthorized change - Assign RO access (How is this enforced)
-	Access Secret
-		Secret is stored in each users local vault
-		Encrypted with their public key (asymmetric encryption)
+
+* Reveal Secret - The attacker is able to reveal the *Secret* the owner wants to keep private.
+		
+   * Unauthorized Access - Attacker is able to gain access to shared secret that was not authorized by *Secret* owner. This can be mitigated by using assymetric encryption where the *Secret* is encrypted with an authorized user's public key. Only the authorized user is able to decrypt the secret using their private key. 
+   
+* Currupt Data - The attacker is able to alter the *Secret* rendering it useless to the owner. 
+
+   * Unauthorized Change - Attacker is able to alter *Secret* without proper authorizatoion.  This is mitigated by ensuring the software will not allow changes to a secret unless they have RW authorization. The software must ensure the RO/RW flag for each shared *Secret* is not subject to tampering. 
 
 #### Alignment of Security Requirements
+
 
 
 #### UML Diagram
