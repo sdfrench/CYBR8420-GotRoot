@@ -29,7 +29,7 @@ This data flow concerns the management of the *Master Password.* The *Master Pas
    * Brute Force - One way to reveal the *Master Password* is to carry out a brute force attack against it. This is mitigated by ensuring chosen *Master Password* meets minimum complexity requirements and therefore is considered strong. This will protect against brute force attacks from discovering *Master Password* in a reasonable amount of time. 
    
    * Obtain Clear Text - Another way an attacker may attempt to reveal *Master Password* is by gaining access to it in clear text form in either memory or storage. Mitigation strategies are as follows:
-      * Sanitize Memory - Ensuring that once the *Master Secret* is no longer needed by application, the memory space where it is located is promptly scrubbed. This must happen before said memory space is deallocated if applicable.
+      * Sanitize Memory - Ensure that once the *Master Secret* is no longer needed by application, the memory space where it is located is promptly scrubbed. This must happen before said memory space is deallocated if applicable.
       * The *Master Password* should never be stored in clear text at rest in storage at any time.
 
 * Information Leakage - The software should not reveal any information about *Secret.* For example, hashes or encrypted blobs of *Master Password* must not Leak any information about it, such as its length.
@@ -69,7 +69,10 @@ This data flow concerns the management of the *Key Encryption Key.*  The *Key En
 
    * Brute Force - Given access to encrypted vault keys, an attacker may attempt to brute force *Master Password* and derive  *Key Encryption Key* in an attempt to reveal vault keys. Protection against this assumes a strong *Master Password* was chosen but further mitigates by ensuring a strong key derivation algorithm is used and implemented properly. A good implementation ensure use of good salt, seed and sufficient amount of iterations which in turn ensures the function takes a significant amount of time to derive the key.
    
-* Reveal Key Encryption Key - The software must take extra precautions to protect the KEK when it is revealed.
+* Reveal Key Encryption Key - An attacker is able to reveal the *Key Encryption Key* in clear text form. The Key Encryption Key must never be stored at rest in clear text form.
+
+  * Sanitize Memory - Ensure that once the *Master Secret* is no longer needed by application, the memory space where it is located is promptly scrubbed. This must happen before said memory space is deallocated if applicable.
+	
    
 #### Alignment of Security Requirements
 
@@ -128,7 +131,7 @@ This data flow concerns the management of *Password.*  When we use *Password* he
 
 #### Misuse Cases / Security Requirements
 
-* Reveal Password -  An attacker is able to reveal the *Password* the end user wants to keep private.
+* Reveal Password - An attacker is able to reveal the *Password* the end user wants to keep private.
 
    * Brute force Attack - Attacker is able to reveal end users password using brute force techniques in a relatively short period of time. This mitigate by ensuing a strong password is used by meeting minimum complexity requirements. 
 		
