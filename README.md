@@ -1,9 +1,6 @@
 # CYBR8420-GotRoot
 
 ### CYBR 8420 - Software Assurance  
-  Fall 2019  
-  Dr. Gandhi  
-  University of Nebraska at Omaha  
 
 ### Course Resourcees
 
