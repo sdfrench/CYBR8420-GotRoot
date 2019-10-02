@@ -2,7 +2,7 @@
 
 ### CYBR 8420 - Software Assurance  
 
-### Course Resourcees
+### Course Resources
 
   [Syllabus](https://robinagandhi.github.io/swa/pages/syllabus.html)  
   [Github](https://github.com/robinagandhi/swa)  
