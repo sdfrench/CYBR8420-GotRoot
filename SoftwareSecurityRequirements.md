@@ -2,9 +2,7 @@
 
 ## Backstory
 
-NOTE: Scope is open for discussion 
-
-Bitwarden is an open-source online password management service. This software has earned a good reputation for security as all sensitive information is encrypted client side before it is sent to an online vault and is recoverable by only using the *Master Password* supplied by the end user. In other words, if the end user forgets their *Master Password*, the items encrypted in the vault will not be recoverable. This software supports a multitude of client applications and devices that all can be used to sync to the online vault. Although the software is free, some features  are only available with premium accounts and/or family/commercial plans. Due to price, security and features like 2 factor authentication, data sharing, etc.. this software has appeal to both the individual user as well as commercial businesses as well. 
+Bitwarden, an open-source online password management service, has earned a good reputation for security. The client's sensative information is encrypted prior to tramsmission to Bitwarden's online vault. Once stored, the encrypted data is only accessable via the client's *Master Password*. The *Master Password* can be changed but not reset. If the user forgets their password, the encrypted items are unrecoverable. Bitwarden supports a multitude of client applications and devices that can be used to sync with the online vault. Although the software is free, some features  are only available with premium accounts and/or family/commercial plans. Due to price, security, and features, such as 2 factor authentication and data sharing, Bitwarden appeals to both the individual user and commercial entities. 
 
 Since the majority of our focus will be client side that is where the majority of the security features are implemented. As mentioned above, this software supports several platforms and we will be primarily focused on the command line client but make look at desktop and browser extensions if we feel there may be something unique to those clients worth pursuing. Mobile devices will be outside the scope of this evaluation however. 
 
