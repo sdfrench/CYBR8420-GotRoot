@@ -4,7 +4,7 @@
 
 NOTE: Scope is open for discussion 
 
-Bitwarden is an open-source online password management service. This software has earned a good reputation for security as all sensitive information is encrypted client side before it is sent to an online vault and is recoverable by only using the master password supplied by the end user. In other words, if the end user forgets their master password, the items encrypted in the vault will not be recoverable. This software supports a multitude of client applications and devices that all can be used to sync to the online vault. Although the software is free, some features  are only available with premium accounts and/or family/commercial plans. Due to price, security and features like 2 factor authentication, data sharing, etc.. this software has appeal to both the individual user as well as commercial businesses as well. 
+Bitwarden is an open-source online password management service. This software has earned a good reputation for security as all sensitive information is encrypted client side before it is sent to an online vault and is recoverable by only using the *Master Password* supplied by the end user. In other words, if the end user forgets their *Master Password*, the items encrypted in the vault will not be recoverable. This software supports a multitude of client applications and devices that all can be used to sync to the online vault. Although the software is free, some features  are only available with premium accounts and/or family/commercial plans. Due to price, security and features like 2 factor authentication, data sharing, etc.. this software has appeal to both the individual user as well as commercial businesses as well. 
 
 Since the majority of our focus will be client side that is where the majority of the security features are implemented. As mentioned above, this software supports several platforms and we will be primarily focused on the command line client but make look at desktop and browser extensions if we feel there may be something unique to those clients worth pursuing. Mobile devices will be outside the scope of this evaluation however. 
 
@@ -21,7 +21,7 @@ Since the majority of our focus will be client side that is where the majority o
 
 #### Misuse Cases / Security Requirements
 
-* Reveal Password - If the software was to Reveal the *Master Password* it would allow an attacker to unlock vault and steal its secrets. 
+* Reveal Password - If the software was to Reveal the *Master Password* it would allow an attacker to unlock vault and steal its *Secrets*. 
 
    * Brute Force - One way to reveal the *Master Password* carry is to carry out a brute force attack against it. This is mitigated by ensuring chosen *Master Password* meets minimum complexity requirements and is considered strong which will protect against brute force attacks given a resonable amount of time. 
    
@@ -29,7 +29,7 @@ Since the majority of our focus will be client side that is where the majority o
       * This is mitigated by ensuring once the *Master Password* is no longer needed by application, the memory space where it is located is promptly scrubbed. This must happen before said memory space is deallocated.
       * The *Master Password* should never be stored in clear text at rest in storage at any time.
 
-* Information Leakage - The software should not reveal any information about secret, which infers that no *Master Password*  data, to include one way hashes of it, should ever be stored at rest in storage or in vault.
+* Information Leakage - The software should not reveal any information about *Secret*, which infers that no *Master Password*  data, to include one way hashes of it, should ever be stored at rest in storage or in vault.
 
 * Network Evesdropping - The secret manager revealing clear text or information of password
 	* The software should avoid sending the *Master Password* in transit over the network at any time
@@ -51,7 +51,7 @@ Since the majority of our focus will be client side that is where the majority o
 
 #### Use Cases
 
-* Derive Key Encryption Key - *Key Encryption Key* is derived from *Master Password* when it is created using a strong encryption key derivation algorithm. As noted above, end user can update *Master Password* at any time, but that may not automatically result in the derivation of a new *Key Encryption Key*. However, end user must be given the option to derive a new encryption key with new master password if they feel encryption key may have been at risk of compromise.
+* Derive Key Encryption Key - *Key Encryption Key* is derived from *Master Password* when it is created using a strong encryption key derivation algorithm. As noted above, end user can update *Master Password* at any time, but that may not automatically result in the derivation of a new *Key Encryption Key*. However, end user must be given the option to derive a new encryption key with new *Master Password* if they feel encryption key may have been at risk of compromise.
 
 #### Misuse Cases / Security Requirements
 
@@ -87,11 +87,11 @@ Since the majority of our focus will be client side that is where the majority o
 
    * Another way an attacker may attempt to reveal a *Secret* is by gaining access to it in clear text form in memory or storage.  
       * This is mitigated by ensuring once a *Secret* is no longer needed by application, the memory space where it is located is promptly scrubbed. This must happen before said memory space is deallocated.
-      * Secret data should never be stored in clear text when at rest. To limit unnecessary exposure the software should encrypt each secret individually preferably with unique encryption keys for each. 
+      * Secret data should never be stored in clear text when at rest. To limit unnecessary exposure the software should encrypt each *Secret* individually preferably with unique encryption keys for each. 
 
-* Information Leakage - The software should not reveal any information about secret even when in encrypted form. For example, an attacker should not be able to compare encrypted blobs and infer the two secrets are identical. 
+* Information Leakage - The software should not reveal any information about *Secret* even when in encrypted form. For example, an attacker should not be able to compare encrypted blobs and infer the two *Secrets* are identical. 
 
-* Corrupt Data - Software should protect against intentional (attacker) or unintentional (end user) data corruption. For instance if encryption keys should ever be changed, the software must ensure that the old keys are not unintentionally used to encrypt and updates going forward. Also only encrypting/decrypting one secret at a time helps to limit exposure should data be corrupted.
+* Corrupt Data - Software should protect against intentional (attacker) or unintentional (end user) data corruption. For instance if encryption keys should ever be changed, the software must ensure that the old keys are not unintentionally used to encrypt and updates going forward. Also only encrypting/decrypting one *Secret* at a time helps to limit exposure should data be corrupted.
 	
 #### Alignment of Security Requirements
 
