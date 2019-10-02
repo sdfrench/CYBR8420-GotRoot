@@ -116,11 +116,12 @@ This data flow concerns the management of *Secrets.*  A *Secret* is considered t
 #### UML Diagram
 ![alt text](Images/Use%20Cases-Secrets.png)
 
-### 4. Manage Passwords (Subset of Secrets) 
+### 4. Manage Passwords 
 
 #### Backstory
 
-This data flow concerns the management of *Password.*  When we use *Password* here we are referring to *Passwords* that are use for authenicating to third party sites or applications. Secrets Managers and Password Managers are oftern used interchangebly although most modern managers are designed to secure much more than just credentials. Having said that, managing *Passwords* is still a very important use case for modern secret managers as good password generation is an effective way to ensure the end user does not engage in unsafe practices such as sharing and/or using weak *Passwords*.  
+This data flow concerns the management of *Password.*  When we use *Password* here we are referring to *Passwords* that are use for authenicating to third party sites or applications. The terms Secrets Managers and Password Managers are often used interchangebly although most modern managers are designed store Secrets outside of just credentials. In gerneral *Password* management can be really consdierd an extension to Secrets management. Managing *Passwords* is still a very important data flow to secret managers as it is an effective way to ensure the end user does not engage in unsafe practices such as sharing and/or using weak *Passwords*.
+
 #### Use Cases
 
 * Password Generation - End user has a *Password* randomly created for them that also meets minimum complexity requirements set by the end use.
@@ -142,11 +143,15 @@ This data flow concerns the management of *Password.*  When we use *Password* he
 
 ### 5. Manage Sharing 
 
+#### Backstory
+
+This data flow concerns the management of the sharing of *Secrets.*  In this case, a *Secret* owner can share a *secret* or a collectoin of *secrets* with another user. In addition to that the *Secret* ownner and assign Read-Only (RO) or Read-Write (RW) access to the shared *Secret* or collection. 
+
 #### Use Cases
   
-* Share Secret - Allow end to share a *Secret* with another user and assign RO or RW permissions for the object and user pair. Owner of object can change permissions or revoke share at any time. *Secret* can only be managed and deleted by *Secret* owner. 
+* Share Secret - Allow *Secret* owner to share a *Secret/s* with another user and assign RO or RW permissions for the share. Owner of object can change permissions or revoke share at any time. 
 
-* Access Shared Secret - This is referring to accessing a shared *Secret* when the end user was not the *Secrets* owner. End user may have RW or RO privileges granted to them by *Secret* object owner.
+* Access Shared Secret - This is referring to accessing a shared *Secret* that was shared to them. The share may have RW or RO privileges granted to them by the *Secret* owner.
 
 #### Misuse Cases / Security Requirements
 
@@ -156,11 +161,16 @@ This data flow concerns the management of *Password.*  When we use *Password* he
    
 * Corrupt Data - The attacker is able to alter the *Secret* rendering it useless to the owner. 
 
-   * Unauthorized Change - Attacker is able to alter *Secret* without proper authorization.  This is mitigated by ensuring the software will not allow changes to a secret unless they have RW authorization. The software must ensure the RO/RW flag for each shared *Secret* is not subject to tampering. 
+   * Unauthorized Change - Attacker is able to alter *Secret* without proper authorization.  This is mitigated by ensuring the software will not allow changes to a secret unless they have RW authorization. The software must ensure the implmentation for RO/RW flag is not subject to tampering. 
 
 #### Alignment of Security Requirements
 
-
+Bitwarden uses [collectoins](https://help.bitwarden.com/article/collections/) for manaaging shares to groups of *secrets*. Each indivual user to the share can be assigned RO/RW permissions as appropiate. Users with RW acccess to a collectoin can add, edit, or delete any Secret item contained within it.
 
 #### UML Diagram
+
+
+## Security Related Configuration and Installation Issues.
+
+## Project Task Assignments and Collaborations 
 ![alt text](Images/Use%20Cases-Sharing.png)
