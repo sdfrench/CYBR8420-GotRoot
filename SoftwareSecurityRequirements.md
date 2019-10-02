@@ -10,11 +10,11 @@ Since the majority of our focus will be client side that is where the majority o
 ## Essential Data Flows: 
 
 
-### 3. Manage Master Password
+### 1. Manage Master Password
 
 #### Backstory
 
-This data flow concerns the management of the *Master Password.* The *Master Password* is the password that is used to ultimately "unlock" a user's vault enabling them to gain access to the *Secrets.*  A *Secret* is considered to be any data, and corresponding metadata, that an end user deems as sensitive and therefore wants to keep private. This includes data such as passwords, but can include any type of sensitive data, as long as it falls within the limitations of the *Secrets Manager.*
+This data flow concerns the management of the *Master Password.* The *Master Password* is the password that is used to ultimately "unlock" a user's vault enabling them to gain access to the *Secrets.*
 
 #### Use Cases
 
@@ -28,8 +28,8 @@ This data flow concerns the management of the *Master Password.* The *Master Pas
 
    * Brute Force - One way to reveal the *Master Password* is to carry out a brute force attack against it. This is mitigated by ensuring chosen *Master Password* meets minimum complexity requirements and is considered strong. This will protect against brute force attacks from discovering *Master Password* in a reasonable amount of time. 
    
-   * Obtain Clear Text - Another way an attacker may attempt to reveal *Master Password* is by gaining access to it in clear text form in either memory or storage.  
-      * Sanitize Memory - One solution mitigate access to clear text is to ensure that once the *Master Password* is no longer needed by application, the memory space where it is located is promptly scrubbed then deallocated if applicable. This must happen before said memory space is deallocated if deallocation call does not guarantee scrubbing of memory prior to releasing memory.
+   * Obtain Clear Text - Another way an attacker may attempt to reveal *Master Password* is by gaining access to it in clear text form in either memory or storage. Mitigations as follows:
+      * Sanitize Memory - Ensuring that once the *Master Secret* is no longer needed by application, the memory space where it is located is promptly scrubbed. This must happen before said memory space is deallocated if applicable.
       * The *Master Password* should never be stored in clear text at rest in storage at any time.
 
 * Information Leakage - The software should not reveal any information about *Secret.* For example, hashes or encrypted blobs of *Master Password* must not Leak any information about it, such as its length.
@@ -83,9 +83,13 @@ This data flow concerns the management of the *Key Encryption Key.*  The *Key En
 
 ### 3. Manage Secrets
 
+#### Backstory
+
+This data flow concerns the management of *Secrets.*  A *Secret* is considered to be any data, and corresponding metadata, that an end user deems as sensitive and therefore wants to keep private. This includes data such as passwords, but can include any type of sensitive data, as long as it falls within the limitations of the *Secrets Manager.*
+
 #### Use Cases
 
-* Store Secret - End user has a *Secret* that they want to encrypt and store in vault. A *Secret* is considered to be any data and any corresponding metadata that an end user deems as sensitive and therefore wants to keep it private. This includes data such as passwords, but can include any type of sensitive data, that falls within the size limits, and attributes defined by the software. 
+* Store Secret - End user has a *Secret* that they want to encrypt and store in vault. 
 
 * Retrieve Secret - End user has a *Secret* that they need to decrypt from vault and view in clear text.
 
@@ -93,11 +97,11 @@ This data flow concerns the management of the *Key Encryption Key.*  The *Key En
 
 * Reveal Secret - The attacker is able to reveal the *Secret* the end user wants to keep private.
 		
-   * Network Evesdrop - If the attacker has direct access to network communications made by the software, they may be able to reveal secret using packet payload data. This can be mitigated by ensuring all data sent over network communications is encrypted and/or data is sent over secure TLS channel.
+   * Network Eavesdrop - If the attacker has direct access to network communications made by the software, they may be able to reveal secret using packet payload data. This can be mitigated by ensuring all data sent over network communications is encrypted and/or data is sent over secure TLS channel.
 
-   * Another way an attacker may attempt to reveal a *Secret* is by gaining access to it in clear text form in memory or storage.  
-      * This is mitigated by ensuring once a *Secret* is no longer needed by application, the memory space where it is located is promptly scrubbed. This must happen before said memory space is deallocated.
-      * Secret data should never be stored in clear text when at rest. To limit unnecessary exposure the software should encrypt each *Secret* individually preferably with unique encryption keys for each. 
+   * Obtain Clear Text - Another way an attacker may attempt to reveal a *Secret* is by gaining access to it in clear text form in memory or storage. Mitgations as follows:
+      * Sanitize Memory - By ensuring that once a *Secret* is no longer needed by application, the memory space where it is located is promptly scrubbed. This must happen before said memory space is deallocated if applicable.
+      * Encrypt Data at Rest - Secret data should never be stored in clear text when at rest. To limit unnecessary exposure the software should encrypt each *Secret* individually and preferably with unique encryption keys for each. 
 
 * Information Leakage - The software should not reveal any information about *Secret* even when in encrypted form. For example, an attacker should not be able to compare encrypted blobs and infer the two *Secrets* are identical. 
 
@@ -105,9 +109,9 @@ This data flow concerns the management of the *Key Encryption Key.*  The *Key En
 	
 #### Alignment of Security Requirements
 
-* Bitwarden encrypts all sensitive data client side and only connects to online service over a TLS socket.
+* Bitwarden [states](https://help.bitwarden.com/article/how-is-data-securely-transmitted-and-stored/) the application encrypts all sensitive data client side and only connects to online service over a TLS socket.
 
-* Bitwarden will try to log out any clients that are still connected to server. However it is strongly recommended that the user log out and in of any clients when changing encryption key. Failure to do so may result in data corruption.
+* Bitwarden [states](https://help.bitwarden.com/article/change-your-master-password/) the application will try to log out any clients that are still connected to server. However it is strongly recommended that the user log out and in of any clients when changing encryption key. Failure to do so may result in data corruption.
 
 #### UML Diagram
 ![alt text](Images/Use%20Cases-Secrets.png)
