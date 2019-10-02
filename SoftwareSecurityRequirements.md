@@ -169,8 +169,9 @@ Bitwarden uses [collectoins](https://help.bitwarden.com/article/collections/) fo
 
 #### UML Diagram
 
+![alt text](Images/Use%20Cases-Sharing.png)
 
 ## Security Related Configuration and Installation Issues.
 
 ## Project Task Assignments and Collaborations 
-![alt text](Images/Use%20Cases-Sharing.png)
+
