@@ -2,27 +2,17 @@
   PenTesting will be performed in a [virtual environment](https://github.com/caseyschmitz/CYBR8420-GotRoot/blob/master/TestBed-8420.jpg).
   
 # Virtual Test Bed Host
-  VMWare Workstation 14 Pro (v14.1.1)
+  VMWare Workstation 15 Pro (v15.1.0)
 
 # Internal VNet Firewall
   pfSense (v2.4.4)
 
-# Attack Platform
+# Attack/Host Platform
   Kali Linux, Large 64-Bit (v2019.3)
 
-# Host Operating Systems
-  Ubuntu 64-Bit(v18.04.3)
-  Windows 7/10 64-Bit (TBD)
-
 # Application Container for Mobile Devices
-  Docker CE (Ubuntu)
+  Docker CE (Kali)
 
 # Web Browsers
-  Mozilla Firefox Quantum
-    Ubuntu (V68.0.1)
-    Windows (v69.0)
-    
-  Google Chrome
-    Ubuntu (TBD)
-    Windows (v77.0.3865.75)
-
+  Mozilla Firefox ESR
+    Kali (v68.1.0)
