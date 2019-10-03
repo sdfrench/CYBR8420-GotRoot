@@ -1,5 +1,7 @@
 # Requirements for Software Security Engineering
 
+Test change
+
 ## Backstory
 
 Bitwarden, an open-source online password management service, has earned a good reputation for security. The client's sensative information is encrypted prior to tramsmission to Bitwarden's online vault. Once stored, the encrypted data is only accessable via the client's *Master Password*. The *Master Password* can be changed but not reset. If the user forgets their password, the encrypted items are unrecoverable. Bitwarden supports a multitude of client applications and devices that can be used to sync with the online vault. Although the software is free, some features  are only available with premium accounts and/or family/commercial plans. Due to price, security, and features, such as 2 factor authentication and data sharing, Bitwarden appeals to both the individual user and commercial entities. 
