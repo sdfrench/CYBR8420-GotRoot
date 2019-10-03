@@ -176,7 +176,70 @@ Bitwarden uses [collections](https://help.bitwarden.com/article/collections/) fo
 
 ## Security Related Configuration and Installation Issues
 
-Command Line Interface (CLI) download file: bw-windows-1.7.4.zip containing the standalone executable: bw.exe. This command runs inside a Windows command prompt shell. The local key vault is stored at: C:\Users\<Username>\AppData\Roaming\Bitwarden CLI\data.json. There are no OS configuration changes required. Screen capture:
+When using the standard online version, Bitwarden is unique from most apps in the fact it does not have an in depth configuration or installation. Having said that, Bitwarden does have the option to host the complete server stack on your own system verses using there cloud based version as discussed [here](https://help.bitwarden.com/article/install-on-premise/). Unfortunately, time did not permit an in depth look of the self hosted option at this point. Bitwarden clients do not have much in the way of configuration and what they do have is synced from the online service. Bitwarden also has several client types (Desktop apps, browser extensions, command line clients, et..) and variations for popular Operating Systems (Windows, Mac, Linux), but for the sake of this document we looked solely at using the standard online service with the command line client for Windows. Aside from some small differences, it appears that the clients all behave similarly in regards to configuration. Although the configuration and installation for Bitwarden is admittedly sparse, we still found some items of interest.
+
+We started with the online portal which is where we set up our free account for testing. When creating a new account, you will be asked to create a Master Password which will be used to unlock your personal vault from that point forward. As mentioned previously when choosing a new master password, Bitwarden will display a strength meter to let the end user know how strong the password is as it is typed. Aside from a minimum requirement of 8 characters, Bitwarden will allow a user to choose a weak password after a pop up warning is acknowledged. The only items needed to create the account and vault are a email address, your name, you chosen password and an optional password hint. The whole process can be completed in under a minute at which time you can then start adding or importing secrets into your vault. I created a contrived secret in the vault for testing below. 
+
+Once the account is set up, the end user then can start installing one or more of the client options availible to them. For this we choose to install the portable command line executable for Windows. The installation required nothing more than extracting a zip file and executing the only file, bw.exe.
+
+The first task attempted with client was to authenticate to vault which was pretty straight forward and provided the following output.
+
+    C:\Users\unouser\bw-windows-1.7.4>bw login -obfuscated-@unomaha.edu
+    ? Master password: [hidden]
+    You are logged in!
+
+    To unlock your vault, set your session key to the `BW_SESSION` environment variable. ex:
+    $ export BW_SESSION="K8rabmxkjcU0mvlWEccneq5mdONw+41vOOKlpDY3fWQvIk1e++iwEZfboReSkHdoUTVsE8FTDejSn4kIzYiwgQ=="
+    > $env:BW_SESSION="K8rabmxkjcU0mvlWEccneq5mdONw+41vOOKlpDY3fWQvIk1e++iwEZfboReSkHdoUTVsE8FTDejSn4kIzYiwgQ=="
+
+    You can also pass the session key to any command with the `--session` option. ex:
+    $ bw list items --session K8rabmxkjcU0mvlWEccneq5mdONw+41vOOKlpDY3fWQvIk1e++iwEZfboReSkHdoUTVsE8FTDejSn4kIzYiwgQ==
+
+As can be seen the client was recommending setting the session key as an environment variable. If one left the command shell unattended or an attacker was able gain access to the session, an attacker could easily execute commands with providing any other credentials as show below. The session did appear to time out after a few minutes of inactivity however.
+
+ C:\Users\unouser\bw-windows-1.7.4>set BW_SESSION="K8rabmxkjcU0mvlWEccneq5mdONw+41vOOKlpDY3fWQvIk1e++iwEZfboReSkHdoUTVsE8FTDejSn4kIzYiwgQ=="
+
+    C:\Users\unouser\bw-windows-1.7.4>echo %BW_SESSION%
+    "K8rabmxkjcU0mvlWEccneq5mdONw+41vOOKlpDY3fWQvIk1e++iwEZfboReSkHdoUTVsE8FTDejSn4kIzYiwgQ=="
+
+    C:\Users\unouser\bw-windows-1.7.4>cls
+
+    C:\Users\unouser\bw-windows-1.7.4>bw list items
+    [{"object":"item","id":"9aa91736-92da-4a0c-a234-aadb000c4100","organizationId":null,"folderId":null,"type":1,"name":"test","notes":null,"favorite":false,"login":{"username":"User","password":"VeryC0mplexP4ss","totp":null,"passwordRevisionDate":null},"collectionIds":[],"revisionDate":"2019-10-03T00:44:36.906Z"}]
+   
+Immediately after authenticating with master password it was noticed that the vault data was synced to client device as documented on Bitwarden's site [here](https://help.bitwarden.com/article/where-is-data-stored-computer/)
+
+    C:\Users\unouser\AppData\Roaming\Bitwarden CLI>dir  %appdata%\"bitwarden CLI"\
+     Volume in drive C has no label.
+     Volume Serial Number is E8EA-01AE
+
+     Directory of C:\Users\unouser\AppData\Roaming\bitwarden CLI
+
+    10/02/2019  07:40 PM    <DIR>          .
+    10/02/2019  07:40 PM    <DIR>          ..
+    10/02/2019  08:48 PM             5,252 data.json
+                   1 File(s)          5,252 bytes
+                   2 Dir(s)  73,770,647,552 bytes free
+
+This file appears to be a local copy of the vault data to include encrypted data as well as some clear text metadata as discussed [here](https://help.bitwarden.com/article/what-information-is-encrypted/). A couple things of interest are the fact that the user name (which is actually the user's email address) appears as clear text in one field but encrypted in another, and there is a field that defines the number of Iterations the Key Derivation Function should use when deriving a new Key Encryption Key. (Only relevant lines shown below, and some data obfuscated)
+    ...
+    "userEmail": "--obfuscated--@unomaha.edu",
+    ...
+    "kdfIterations": 100000,
+    ...
+      "login": {
+        "username": "2.eyhmOV---yeW6YQ9ChYw==|ugxNKr6-----mXNcYIiXOYww==|nPH+KB8mV9FCLg5dcXw----Nic13ebjwcuJGAMRW18=",
+        "password": "2.rIfX3K---vHIa3h+u6p3Q==|Df5AG4G-----fp8Kcng2w==|Ajro1X8NfswplISRSi3----YrIKQkw2KCUlb7E6e3s=",
+        "passwordRevisionDate": null,
+        "totp": null
+      }
+    ...
+    
+This file is synced with server (who is authoritative) at login but appears to conduct read operations from the cached vault data. We are wondering if "kdfIterations" can be overwritten locally and if the client can be tricked into using an artificially low iteration count making the master password susceptible to a brut force attack as documented with another online security manager [here](https://palant.de/2018/07/09/is-your-lastpass-data-really-safe-in-the-encrypted-online-vault/). Bitwarden has [documented](https://help.bitwarden.com/article/change-your-master-password/) cache mismatch issues so its sounds possible but we will need to conduct testing to vet that out.
+  
+
+
+Command Line Interface (CLI) download file: bw-windows-1.7.4.zip containing the standalone executable: bw.exe. 
 
 	C:\Users\unouser\Documents>bw
 	Usage: bw [options] [command]
