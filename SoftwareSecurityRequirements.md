@@ -226,5 +226,5 @@ Command Line Interface (CLI) download file: bw-windows-1.7.4.zip containing the 
 	bw delete item 99ee88d2-6046-4ea7-92c2-acac464b1412
 	bw generate -lusn --length 18 
 
-## Project Task Assignments and Collaborations 
+## [Project Task Assignments and Collaborations](https://github.com/caseyschmitz/CYBR8420-GotRoot/issues)
 
