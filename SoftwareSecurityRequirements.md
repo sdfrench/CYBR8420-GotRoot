@@ -197,7 +197,7 @@ The first task attempted with client was to authenticate to vault which was pret
 
 As can be seen the client was recommending setting the session key as an environment variable. If one left the command shell unattended or an attacker was able gain access to the session, an attacker could easily execute commands with providing any other credentials as show below. The session did appear to time out after a few minutes of inactivity however.
 
- C:\Users\unouser\bw-windows-1.7.4>set BW_SESSION="K8rabmxkjcU0mvlWEccneq5mdONw+41vOOKlpDY3fWQvIk1e++iwEZfboReSkHdoUTVsE8FTDejSn4kIzYiwgQ=="
+    C:\Users\unouser\bw-windows-1.7.4>set BW_SESSION="K8rabmxkjcU0mvlWEccneq5mdONw+41vOOKlpDY3fWQvIk1e++iwEZfboReSkHdoUTVsE8FTDejSn4kIzYiwgQ=="
 
     C:\Users\unouser\bw-windows-1.7.4>echo %BW_SESSION%
     "K8rabmxkjcU0mvlWEccneq5mdONw+41vOOKlpDY3fWQvIk1e++iwEZfboReSkHdoUTVsE8FTDejSn4kIzYiwgQ=="
