@@ -222,6 +222,7 @@ Immediately after authenticating with master password it was noticed that the va
                    2 Dir(s)  73,770,647,552 bytes free
 
 This file appears to be a local copy of the vault data to include encrypted data as well as some clear text metadata as discussed [here](https://help.bitwarden.com/article/what-information-is-encrypted/). A couple things of interest are the fact that the user name (which is actually the user's email address) appears as clear text in one field but encrypted in another, and there is a field that defines the number of Iterations the Key Derivation Function should use when deriving a new Key Encryption Key. (Only relevant lines shown below, and some data obfuscated)
+
     ...
     "userEmail": "--obfuscated--@unomaha.edu",
     ...
