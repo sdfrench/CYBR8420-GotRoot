@@ -35,10 +35,10 @@
 **Evidence:**
 
 
-
-
 ## Bitwarden Case Allignment 
 
+
 ## Project Task Assignments and Collaborations
+
 
 ## Team Reflections
