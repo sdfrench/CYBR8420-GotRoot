@@ -38,7 +38,7 @@
 ## Bitwarden Case Alignment 
 
 
-## Project Task Assignments and Collaborations
+## [Project Task Assignments and Collaborations](https://github.com/caseyschmitz/CYBR8420-GotRoot/projects/2)
 
 
 ## Team Reflections
