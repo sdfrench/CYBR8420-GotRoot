@@ -236,7 +236,7 @@ This file appears to be a local copy of the vault data to include encrypted data
       }
     ...
     
-This file is synced with server (who is authoritative) at login but appears to conduct read operations from the cached vault data. We are wondering if "kdfIterations" can be overwritten locally and if the client can be tricked into using an artificially low iteration count making the master password susceptible to a brut force attack as documented with another online security manager [here](https://palant.de/2018/07/09/is-your-lastpass-data-really-safe-in-the-encrypted-online-vault/). Bitwarden has [documented](https://help.bitwarden.com/article/change-your-master-password/) cache mismatch issues so its sounds possible but we will need to conduct testing to vet that out.
+This file is synced with server (who is authoritative) at login but appears to conduct read operations from the cached vault data. We are wondering if "kdfIterations" can be overwritten locally and if the client can be tricked into using an artificially low iteration count making the master password susceptible to a brute force attack as documented with another online security manager [here](https://palant.de/2018/07/09/is-your-lastpass-data-really-safe-in-the-encrypted-online-vault/). Bitwarden has [documented](https://help.bitwarden.com/article/change-your-master-password/) vault synchronization issues so this attack may be possible but further testing will be needed to vet that out.
   
 
 
