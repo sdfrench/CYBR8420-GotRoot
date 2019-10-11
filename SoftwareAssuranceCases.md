@@ -35,7 +35,7 @@
 **Evidence:**
 
 
-## Bitwarden Case Allignment 
+## Bitwarden Case Alignment 
 
 
 ## Project Task Assignments and Collaborations
