@@ -22,7 +22,7 @@ E9.1 - At the time of this document, the [results](https://www.ssllabs.com/sslte
 
 E10.1 - At the time of this document, the [results](https://www.ssllabs.com/ssltest/analyze.html?d=vault.bitwarden.com&hideResults=on&latest) from SSL Labs shows that [Bitwarden Online Vault](https://vault.bitwarden.com/#/) has no high risk vulnerabilities present that can be fixed with configuration changes.
 
-**Alignment:** 7|7 ✔️
+**Alignment:** 6|7 ⚠️
 
 ### 2. The System is acceptably secure against login attacks
 
@@ -42,7 +42,7 @@ E9.1 - MFA options offered by Bitwarden include [authenticator app](https://help
 
 E10.1 - Duo Security does allow [SMS](https://guide.duo.com/prompt) to be used as an authentication prompt. SMS is [no longer recommended](https://pages.nist.gov/800-63-3/sp800-63b.html) by NIST as a Two-Factor Authentication mechanism, citing weaknesses against Social Engineering and Endpoint Compromise.
 
-**Alignment:** 2|4 ⚠️
+**Alignment:** 4|6 ⚠️
 
 ### 3. The System prevents unauthorized access to secret data
 
@@ -64,6 +64,7 @@ E9.1 - (See Case 3: E5.1)
 
 E10.1 - Bitwarden [discloses](https://help.bitwarden.com/article/what-information-is-encrypted/) what data will not be encrypted. Any metadata related to a secret will be encrypted.
 
+**Alignment:** 6|7 ⚠️
 
 ### 4. The System adequately limits clear text exposure of user's secret data.
 
@@ -72,16 +73,19 @@ E10.1 - Bitwarden [discloses](https://help.bitwarden.com/article/what-informatio
 
 **Evidence:**
 
-E2.1 - Bitwarden clears any sensitive vault data, as well as encryption keys from memory whenever the application enters a locked state. We also use other techniques, such as reloading the process after 10 seconds of inactivity on the lock screen, to make sure any managed memory addresses which have not yet been garbage collected are also purged.
+E2.1 - Bitwarden [clears any sensitive vault data](https://community.bitwarden.com/t/any-thoughts-on-this-independent-security-study-apparently-all-the-major-pw-managers-are-insecure/4663/7), as well as encryption keys from memory whenever the application enters a locked state. Bitwarden also uses other techniques, such as reloading the process after 10 seconds of inactivity on the lock screen, to make sure any managed memory addresses which have not yet been garbage collected are also purged.
 
-E3.1 - Bitwarden uses fully audited open-source end-to-end encryption (e2ee), which provides the best security possible. The only way to decrypt your data is by using the correct master password, which is not recoverable should you forget it. So don’t. [New Functionality release](https://blog.bitwarden.com/autofill-improvements-come-to-ios-12-android-9-3072576c7411).
+E3.1 - Bitwarden uses fully audited open-source end-to-end encryption (e2ee). Which is as good a guarantee that it is secure and private as it’s possible to get. The only way to decrypt your data is by using the correct master password, which is not recoverable should you forget it. So don’t. [New Functionality release](https://blog.bitwarden.com/autofill-improvements-come-to-ios-12-android-9-3072576c7411).
 
-E5.1 - When your devices sync with the Bitwarden cloud servers, a copy of the encrypted data is downloaded and securely stored to your local device. Whenever you use the Bitwarden apps or extensions your data is only decrypted as needed. Decrypted data is never stored on your local device or the Bitwarden server.
+E5.1 - When devices sync with the Bitwarden cloud servers, a copy of the encrypted data is downloaded and [securely stored to the local device](https://help.bitwarden.com/article/how-is-data-securely-transmitted-and-stored/). Bitwarden apps or extensions ensure that data is decrypted only in memory as needed. Data is never stored in its decrypted form on the remote Bitwarden servers or on the local device.
+
 
 E6.1 - (See E3.1 case 4)
 
+E8.1 - In November 2018 a crowdfunded independent security audit by Cure53 found no major issues with the software. Some non-critical issues were discovered, the most important of which were patched immediately. We can only presume that developer Kyle has been working hard this last year to fix any additional issues raised by the audit.
 
-E8.1 - In November 2018, a crowdfunded independent security audit by Cure53 found no major issues with the software. Some non-critical issues were discovered, the most important of which were patched immediately. We can only presume that developer Kyle has been working hard this last year to fix any additional issues raised by the audit. 
+**Alignment:** 3|5 ⚠️
+
 ### 5. The System adequately ensures the availability of secret data
 
 ![alt text](Images/Assurance%20Cases%20-%20Availability.png)
@@ -96,12 +100,9 @@ E5.1 - Cloud [backups](https://help.bitwarden.com/article/backup-on-premise/) ar
 
 E6.1 - Bitwarden's server-side ability to [scale](https://help.bitwarden.com/article/backup-on-premise/) make it inherently resilient to attacks against resources. Additionally, Bitwarden implements [IP-based blacklisting](https://www.reddit.com/r/Bitwarden/comments/9ld211/no_account_lockout_on_many_invalid_attempts/e75xxu1/?context=8&depth=9) against clients that fail too many logins in a period of time.
 
-
-## Bitwarden Case Alignment 
-
+**Alignment:** 3|4 ⚠️
 
 ## [Project Task Assignments and Collaborations](https://github.com/caseyschmitz/CYBR8420-GotRoot/projects/2)
-
 
 ## Team Reflections
 | Issue | Description | Mitigation |
