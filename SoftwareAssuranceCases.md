@@ -48,6 +48,21 @@ E10.1 - Duo Security does allow [SMS](https://guide.duo.com/prompt) to be used a
 
 **Evidence:**
 
+E3.1 - Bitwarden [states](https://help.bitwarden.com/article/forgot-master-password/) that the corresponding *Master Password* is the only way to unlock a vault. In addition to that, the *Master Password* is never stored or even sent in clear to online vault according to [here](https://help.bitwarden.com/article/can-bitwarden-see-my-passwords/). 
+
+E4.1 - Bitwarden [states](https://help.bitwarden.com/article/how-is-data-securely-transmitted-and-stored/) that sensitive is never stored in its decrypted form server or client side.
+
+E5.1 - Bitwarden [states](https://help.bitwarden.com/article/how-is-data-securely-transmitted-and-stored/) that data is only decrypted as needed but have not found anything definitive for memory sanitization.
+
+E6.1 - Bitwarden [states](https://help.bitwarden.com/article/what-encryption-is-used/) that no data. which would include *Master Password*,  s sent unencrypted to cloud servers.
+
+E8.1 - (See Case 1: E3.1)
+
+E9.1 - TODO - find data to support this
+
+E10.1 - Bitwarden discloses [here](https://help.bitwarden.com/article/what-information-is-encrypted/) what data won't be encrypted. Any metadata related to a secret will be encrypted.
+
+
 ### 4. The System adequately limits clear text exposure of user's secret data.
 
 
