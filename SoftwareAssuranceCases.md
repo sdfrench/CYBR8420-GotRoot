@@ -8,7 +8,7 @@
 
 **Evidence:**
 
-E3.1 - Bitwarden uses a *Master Password* which is used to derive a *Key Encryption Key.*  Bitwarden states [here](https://help.bitwarden.com/article/what-encryption-is-used/) that it uses PBKDF2 SHA-256 as its derivation function. The *Key Encryption Key* (or Master Key) is used to protect the *Private Encryption Key* which is used to decrypt secret data. Bitwarden states that they run 100,001 iterations client side and another 100,000 on the server side. This appears to be in line with other secret managers. This assumes a strong *Master Password* was chosen. 
+E3.1 - Bitwarden uses a *Master Password* which is used to derive a *Key Encryption Key.*  Bitwarden states [here](https://help.bitwarden.com/article/what-encryption-is-used/) that it uses PBKDF2 SHA-256 as its derivation function. The *Key Encryption Key* (or Master Key) is used to protect the *Private Encryption Key* which is used to decrypt secret data. Bitwarden states that they run 100,001 iterations client side and another 100,000 on the server side. This appears to be in line with other secret managers however it may be borderline with today's computing power. This also assumes a strong *Master Password* was chosen. 
 
 E4.1 - Bitwarden [states](https://help.bitwarden.com/article/what-encryption-is-used/) that they do not write any cryptographic code, and only use reputable cryptographic libraries that are maintained by experts.
 
@@ -58,7 +58,7 @@ E6.1 - Bitwarden [states](https://help.bitwarden.com/article/what-encryption-is-
 
 E8.1 - (See Case 1: E3.1)
 
-E9.1 - TODO - find data to support this
+E9.1 - Coiuld not find any data to support this at this time. 
 
 E10.1 - Bitwarden discloses [here](https://help.bitwarden.com/article/what-information-is-encrypted/) what data won't be encrypted. Any metadata related to a secret will be encrypted.
 
