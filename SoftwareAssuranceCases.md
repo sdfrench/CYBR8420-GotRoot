@@ -29,6 +29,14 @@ E10.1 - At the time of this document, the [results](https://www.ssllabs.com/sslt
 
 **Evidence:**
 
+E3.1 - Confirmed through experimentation, Bitwarden enforces a minimum size of 8 characters when creating a *Master Password*. However, according to Bitwarden's *Master Password* strength meter, an 8 character is still considered weak even with a good variety of character types. A 9 character password was considered good, so why is that not the minimum size.
+
+E4.1 - Bitwarden has a *Master Password* strength meter that shows the strength of the chose password as the user types. The strength meter seems to be well implemented but unfortunately is only suggestive and will allow a user to select a weak password.
+
+E5.1 - (See Case 2: E3.1 and E4.1)
+
+E6.1 - (See Case 1: E3.1)
+
 E9.1 - MFA options offered by Bitwarden include [authenticator app](https://help.bitwarden.com/article/setup-two-step-login-authenticator/), [email](https://help.bitwarden.com/article/setup-two-step-login-email/), [Duo Security](https://help.bitwarden.com/article/setup-two-step-login-duo/), [YubiKey](https://help.bitwarden.com/article/setup-two-step-login-yubikey/), and [FIDO U2F](https://help.bitwarden.com/article/setup-two-step-login-u2f/).
 
 E10.1 - Duo Security does allow [SMS](https://guide.duo.com/prompt) to be used as an authentication prompt. SMS is [no longer recommended](https://pages.nist.gov/800-63-3/sp800-63b.html) by NIST as a Two-Factor Authentication mechanism, citing weaknesses against Social Engineering and Endpoint Compromise.
