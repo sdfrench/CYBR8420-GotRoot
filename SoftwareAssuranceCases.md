@@ -8,6 +8,21 @@
 
 **Evidence:**
 
+E3.1 - Bitwarden uses a *Master Password* which is used to derive a *Key Encryption Key.*  Bitwarden states [here](https://help.bitwarden.com/article/what-encryption-is-used/) that it uses PBKDF2 SHA-256 as its derivation function. The *Key Encryption Key* (or Master Key) in turn is what is used to protet the *Private Encryption Key* which is what is used to decrypt secret data. Bitwarden state they use 100,1001 iterations client side and an additional 100,000 server side which appears to be in line with other secret managers. This of course assumes a strong *Master Password* was chosen. 
+
+E4.1 - Bitwarden [states](https://help.bitwarden.com/article/what-encryption-is-used/) that they do not write and cryptographic code and only use reputable cryptographic libraries that maintained by experts.
+
+E5.1 - Bitwarden has had their source code [cryptographically analyzed](https://help.bitwarden.com/article/is-bitwarden-audited/) by a reputable third-party security firm. 
+
+E7.1 - At the time of this document, the [results](https://www.ssllabs.com/ssltest/analyze.html?d=vault.bitwarden.com&hideResults=on&latest) from SSL Labs shows the [Bitwarden Vault](https://vault.bitwarden.com/#/) is using an acceptable key size of 2048 bits (RSA) however stronger keys of 3072 or 4096 bits are recommended.
+
+E8.1 - At the time of this document, the [results](https://www.ssllabs.com/ssltest/analyze.html?d=vault.bitwarden.com&hideResults=on&latest) from SSL Labs shows the [Bitwarden Online Vault](https://vault.bitwarden.com/#/) is using Comodo whom is  considered to be a reputable Certificate Authority. 
+
+E9.1 - At the time of this document, the [results](https://www.ssllabs.com/ssltest/analyze.html?d=vault.bitwarden.com&hideResults=on&latest) from SSL Labs shows the [Bitwarden Online Vault](https://vault.bitwarden.com/#/) it appears that the server does allow connections with weak ciphers (as well as old versions of TLS). However the server is configured to prefer stong cihpers over weak ones. This was most likely done to support old devices. There should be no risk to a user who connects with a modern device that supports strong ciphers and the latest versions of TLS. 
+
+E10.1 - At the time of this document, the [results](https://www.ssllabs.com/ssltest/analyze.html?d=vault.bitwarden.com&hideResults=on&latest) from SSL Labs shows the [Bitwarden Online Vault](https://vault.bitwarden.com/#/) that there are no high risk vulnerabilities present that can be fixed with configuration changes.
+
+
 ### 2. The System is acceptably secure against login attacks
 
 ![alt text](Images/Assurance%20Cases%20-%20Logins.png)
