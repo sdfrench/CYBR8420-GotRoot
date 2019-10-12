@@ -62,7 +62,7 @@ E8.1 - (See Case 1: E3.1)
 
 E9.1 - (See Case 3: E5.1) 
 
-E10.1 - Bitwarden discloses [here](https://help.bitwarden.com/article/what-information-is-encrypted/) what data won't be encrypted. Any metadata related to a secret will be encrypted.
+E10.1 - Bitwarden [discloses](https://help.bitwarden.com/article/what-information-is-encrypted/) what data will not be encrypted. Any metadata related to a secret will be encrypted.
 
 
 ### 4. The System adequately limits clear text exposure of user's secret data.
@@ -74,14 +74,14 @@ E10.1 - Bitwarden discloses [here](https://help.bitwarden.com/article/what-infor
 
 E2.1 - Bitwarden clears any sensitive vault data, as well as encryption keys from memory whenever the application enters a locked state. We also use other techniques, such as reloading the process after 10 seconds of inactivity on the lock screen, to make sure any managed memory addresses which have not yet been garbage collected are also purged.
 
-E3.1 - Bitwarden uses fully audited open-source end-to-end encryption (e2ee). Which is as good a guarantee that it is secure and private as it’s possible to get. The only way to decrypt your data is by using the correct master password, which is not recoverable should you forget it. So don’t. [New Fonctionality release](https://blog.bitwarden.com/autofill-improvements-come-to-ios-12-android-9-3072576c7411).
+E3.1 - Bitwarden uses fully audited open-source end-to-end encryption (e2ee), which provides the best security possible. The only way to decrypt your data is by using the correct master password, which is not recoverable should you forget it. So don’t. [New Functionality release](https://blog.bitwarden.com/autofill-improvements-come-to-ios-12-android-9-3072576c7411).
 
-E5.1 - When your devices sync with the Bitwarden cloud servers, a copy of the encrypted data is downloaded and securely stored to your local device. Whenever you use the Bitwarden apps or extensions your data is decrypted only in memory as needed. Data is never stored in its decrypted form on the remote Bitwarden servers or on your local device.
+E5.1 - When your devices sync with the Bitwarden cloud servers, a copy of the encrypted data is downloaded and securely stored to your local device. Whenever you use the Bitwarden apps or extensions your data is only decrypted as needed. Decrypted data is never stored on your local device or the Bitwarden server.
 
 E6.1 - (See E3.1 case 4)
 
 
-E8.1 - In November 2018 a crowdfunded independent security audit by Cure53 found no major issues with the software. Some non-critical issues were discovered, the most important of which were patched immediately. We can only presume that developer Kyle has been working hard this last year to fix any additional issues raised by the audit. 
+E8.1 - In November 2018, a crowdfunded independent security audit by Cure53 found no major issues with the software. Some non-critical issues were discovered, the most important of which were patched immediately. We can only presume that developer Kyle has been working hard this last year to fix any additional issues raised by the audit. 
 ### 5. The System adequately ensures the availability of secret data
 
 ![alt text](Images/Assurance%20Cases%20-%20Availability.png)
