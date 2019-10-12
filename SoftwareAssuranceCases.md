@@ -61,6 +61,14 @@ E10.1 - Duo Security does allow [SMS](https://guide.duo.com/prompt) to be used a
 
 **Evidence:**
 
+E3.1 - Bitwarden processes and stores data in the [Microsoft Azure cloud](https://help.bitwarden.com/article/cloud-server-security/). Trust is placed in Microsoft's ability to ensure uptime, scalability, and security updates.
+
+E4.1 - Cloud [backups](https://help.bitwarden.com/article/backup-on-premise/) are managed by Bitwarden, but backup procedures in a self-hosted environment is the user's responsibility. Bitwarden's Docker containers use volume mapping to store data in the *./bwdata* directory, which is necessary to backup to recover from data loss. Bitwarden is automatically configured to perform nightly backups of the *mssql* container, which are kept in *./bwdata/mssql/backups* for thirty days.
+
+E5.1 - Cloud [backups](https://help.bitwarden.com/article/backup-on-premise/) are managed by Bitwarden.
+
+E6.1 - 
+
 
 ## Bitwarden Case Alignment 
 
