@@ -58,7 +58,7 @@ E6.1 - Bitwarden [states](https://help.bitwarden.com/article/what-encryption-is-
 
 E8.1 - (See Case 1: E3.1)
 
-E9.1 - Coiuld not find any data to support this at this time. 
+E9.1 - (See Case 3: E5.1) 
 
 E10.1 - Bitwarden discloses [here](https://help.bitwarden.com/article/what-information-is-encrypted/) what data won't be encrypted. Any metadata related to a secret will be encrypted.
 
