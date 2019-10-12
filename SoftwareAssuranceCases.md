@@ -22,6 +22,7 @@ E9.1 - At the time of this document, the [results](https://www.ssllabs.com/sslte
 
 E10.1 - At the time of this document, the [results](https://www.ssllabs.com/ssltest/analyze.html?d=vault.bitwarden.com&hideResults=on&latest) from SSL Labs shows that [Bitwarden Online Vault](https://vault.bitwarden.com/#/) has no high risk vulnerabilities present that can be fixed with configuration changes.
 
+**Alignment:** 7|7 ✔️
 
 ### 2. The System is acceptably secure against login attacks
 
