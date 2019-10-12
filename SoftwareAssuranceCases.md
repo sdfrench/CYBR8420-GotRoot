@@ -8,19 +8,19 @@
 
 **Evidence:**
 
-E3.1 - Bitwarden uses a *Master Password* which is used to derive a *Key Encryption Key.*  Bitwarden states [here](https://help.bitwarden.com/article/what-encryption-is-used/) that it uses PBKDF2 SHA-256 as its derivation function. The *Key Encryption Key* (or Master Key) in turn is what is used to protet the *Private Encryption Key* which is what is used to decrypt secret data. Bitwarden state they use 100,1001 iterations client side and an additional 100,000 server side which appears to be in line with other secret managers. This of course assumes a strong *Master Password* was chosen. 
+E3.1 - Bitwarden uses a *Master Password* which is used to derive a *Key Encryption Key.*  Bitwarden states [here](https://help.bitwarden.com/article/what-encryption-is-used/) that it uses PBKDF2 SHA-256 as its derivation function. The *Key Encryption Key* (or Master Key) is used to protect the *Private Encryption Key* which is used to decrypt secret data. Bitwarden states that they run 100,001 iterations client side and another 100,000 on the server side. This appears to be in line with other secret managers. This assumes a strong *Master Password* was chosen. 
 
-E4.1 - Bitwarden [states](https://help.bitwarden.com/article/what-encryption-is-used/) that they do not write and cryptographic code and only use reputable cryptographic libraries that maintained by experts.
+E4.1 - Bitwarden [states](https://help.bitwarden.com/article/what-encryption-is-used/) that they do not write any cryptographic code, and only use reputable cryptographic libraries that are maintained by experts.
 
 E5.1 - Bitwarden has had their source code [cryptographically analyzed](https://help.bitwarden.com/article/is-bitwarden-audited/) by a reputable third-party security firm. 
 
-E7.1 - At the time of this document, the [results](https://www.ssllabs.com/ssltest/analyze.html?d=vault.bitwarden.com&hideResults=on&latest) from SSL Labs shows the [Bitwarden Vault](https://vault.bitwarden.com/#/) is using an acceptable key size of 2048 bits (RSA) however stronger keys of 3072 or 4096 bits are recommended.
+E7.1 - At the time of this document, the [results](https://www.ssllabs.com/ssltest/analyze.html?d=vault.bitwarden.com&hideResults=on&latest) from SSL Labs show that [Bitwarden Vault](https://vault.bitwarden.com/#/) is using an acceptable key size of 2048 bits (RSA). However, stronger keys of 3072 or 4096 bits are recommended.
 
-E8.1 - At the time of this document, the [results](https://www.ssllabs.com/ssltest/analyze.html?d=vault.bitwarden.com&hideResults=on&latest) from SSL Labs shows the [Bitwarden Online Vault](https://vault.bitwarden.com/#/) is using Comodo whom is  considered to be a reputable Certificate Authority. 
+E8.1 - At the time of this document, the [results](https://www.ssllabs.com/ssltest/analyze.html?d=vault.bitwarden.com&hideResults=on&latest) from SSL Labs show that [Bitwarden Online Vault](https://vault.bitwarden.com/#/) is using Comodo, which is considered to be a reputable Certificate Authority. 
 
-E9.1 - At the time of this document, the [results](https://www.ssllabs.com/ssltest/analyze.html?d=vault.bitwarden.com&hideResults=on&latest) from SSL Labs shows the [Bitwarden Online Vault](https://vault.bitwarden.com/#/) it appears that the server does allow connections with weak ciphers (as well as old versions of TLS). However the server is configured to prefer stong cihpers over weak ones. This was most likely done to support old devices. There should be no risk to a user who connects with a modern device that supports strong ciphers and the latest versions of TLS. 
+E9.1 - At the time of this document, the [results](https://www.ssllabs.com/ssltest/analyze.html?d=vault.bitwarden.com&hideResults=on&latest) from SSL Labs show that [Bitwarden Online Vault](https://vault.bitwarden.com/#/) does allow connections with weak ciphers (as well as old versions of TLS). However, the server is configured to prefer stong ciphers. This was most likely done to support old devices. There should be no risk to a user who connects with a modern device that supports strong ciphers and the latest versions of TLS. 
 
-E10.1 - At the time of this document, the [results](https://www.ssllabs.com/ssltest/analyze.html?d=vault.bitwarden.com&hideResults=on&latest) from SSL Labs shows the [Bitwarden Online Vault](https://vault.bitwarden.com/#/) that there are no high risk vulnerabilities present that can be fixed with configuration changes.
+E10.1 - At the time of this document, the [results](https://www.ssllabs.com/ssltest/analyze.html?d=vault.bitwarden.com&hideResults=on&latest) from SSL Labs shows that [Bitwarden Online Vault](https://vault.bitwarden.com/#/) has no high risk vulnerabilities present that can be fixed with configuration changes.
 
 
 ### 2. The System is acceptably secure against login attacks
@@ -29,9 +29,9 @@ E10.1 - At the time of this document, the [results](https://www.ssllabs.com/sslt
 
 **Evidence:**
 
-E3.1 - Confirmed through experimentation, Bitwarden enforces a minimum size of 8 characters when creating a *Master Password*. However, according to Bitwarden's *Master Password* strength meter, an 8 character is still considered weak even with a good variety of character types. A 9 character password was considered good, so why is that not the minimum size.
+E3.1 - Confirmed through experimentation: Bitwarden enforces a minimum size of 8 characters when creating a *Master Password*. However, according to Bitwarden's *Master Password* strength meter, an 8 character is still considered weak even with a good variety of character types. Minimum password size should be adjusted to 9 characters.
 
-E4.1 - Bitwarden has a *Master Password* strength meter that shows the strength of the chose password as the user types. The strength meter seems to be well implemented but unfortunately is only suggestive and will allow a user to select a weak password.
+E4.1 - Bitwarden has a *Master Password* strength meter that shows the strength of the chosen password as the user types. The strength meter seems to be well implemented. Unfortunately it is only suggestive, and will allow a user to select a weak password.
 
 E5.1 - (See Case 2: E3.1 and E4.1)
 
@@ -61,9 +61,9 @@ E10.1 - Duo Security does allow [SMS](https://guide.duo.com/prompt) to be used a
 
 **Evidence:**
 
-E3.1 - Bitwarden processes and stores data in the [Microsoft Azure cloud](https://help.bitwarden.com/article/cloud-server-security/). Trust is placed in Microsoft's ability to ensure uptime, scalability, and security updates.
+E3.1 - Bitwarden processes and stores data in the [Microsoft Azure cloud](https://help.bitwarden.com/article/cloud-server-security/). Trust is placed in Microsoft's ability to ensure uptime, scalability, and security.
 
-E4.1 - Cloud [backups](https://help.bitwarden.com/article/backup-on-premise/) are managed by Bitwarden, but backup procedures in a self-hosted environment is the user's responsibility. Bitwarden's Docker containers use volume mapping to store data in the *./bwdata* directory, which is necessary to backup to recover from data loss. Bitwarden is automatically configured to perform nightly backups of the *mssql* container, which are kept in *./bwdata/mssql/backups* for thirty days.
+E4.1 - Cloud [backups](https://help.bitwarden.com/article/backup-on-premise/) are managed by Bitwarden. However, backup procedures are the user's responibility in a self-hosted environment. Bitwarden's Docker containers use volume mapping to store data in the *./bwdata* directory, which is necessary to backup and recover data. Bitwarden is configured to automatically perform nightly backups of the *mssql* container, which are kept in *./bwdata/mssql/backups* for thirty days.
 
 E5.1 - Cloud [backups](https://help.bitwarden.com/article/backup-on-premise/) are managed by Bitwarden.
 
