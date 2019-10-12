@@ -42,6 +42,7 @@ E9.1 - MFA options offered by Bitwarden include [authenticator app](https://help
 
 E10.1 - Duo Security does allow [SMS](https://guide.duo.com/prompt) to be used as an authentication prompt. SMS is [no longer recommended](https://pages.nist.gov/800-63-3/sp800-63b.html) by NIST as a Two-Factor Authentication mechanism, citing weaknesses against Social Engineering and Endpoint Compromise.
 
+**Alignment:** 2|4 ⚠️
 
 ### 3. The System prevents unauthorized access to secret data
 
