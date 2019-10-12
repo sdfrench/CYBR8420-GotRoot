@@ -55,6 +55,12 @@ E10.1 - Duo Security does allow [SMS](https://guide.duo.com/prompt) to be used a
 
 **Evidence:**
 
+E3.1 - Bitwarden uses fully audited open-source end-to-end encryption (e2ee). Which is as good a guarantee that it is secure and private as it’s possible to get. The only way to decrypt your data is by using the correct master password, which is not recoverable should you forget it. So don’t. [New Fonctionality release](https://blog.bitwarden.com/autofill-improvements-come-to-ios-12-android-9-3072576c7411)
+
+E6.1 - (See E3.1 case 4)
+
+
+E8.1 - In November 2018 a crowdfunded independent security audit by Cure53 found no major issues with the software. Some non-critical issues were discovered, the most important of which were patched immediately. We can only presume that developer Kyle has been working hard this last year to fix any additional issues raised by the audit. 
 ### 5. The System adequately ensures the availability of secret data
 
 ![alt text](Images/Assurance%20Cases%20-%20Availability.png)
