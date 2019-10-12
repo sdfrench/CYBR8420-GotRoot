@@ -29,6 +29,10 @@ E10.1 - At the time of this document, the [results](https://www.ssllabs.com/sslt
 
 **Evidence:**
 
+E9.1 - MFA options offered by Bitwarden include [authenticator app](https://help.bitwarden.com/article/setup-two-step-login-authenticator/), [email](https://help.bitwarden.com/article/setup-two-step-login-email/), [Duo Security](https://help.bitwarden.com/article/setup-two-step-login-duo/), [YubiKey](https://help.bitwarden.com/article/setup-two-step-login-yubikey/), and [FIDO U2F](https://help.bitwarden.com/article/setup-two-step-login-u2f/).
+
+E10.1 - Duo Security does allow [SMS](https://guide.duo.com/prompt) to be used as an authentication prompt. SMS is [no longer recommended](https://pages.nist.gov/800-63-3/sp800-63b.html) by NIST as a Two-Factor Authentication mechanism, citing weaknesses against Social Engineering and Endpoint Compromise.
+
 
 ### 3. The System prevents unauthorized access to secret data
 
