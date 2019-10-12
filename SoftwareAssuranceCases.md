@@ -55,7 +55,11 @@ E10.1 - Duo Security does allow [SMS](https://guide.duo.com/prompt) to be used a
 
 **Evidence:**
 
-E3.1 - Bitwarden uses fully audited open-source end-to-end encryption (e2ee). Which is as good a guarantee that it is secure and private as it’s possible to get. The only way to decrypt your data is by using the correct master password, which is not recoverable should you forget it. So don’t. [New Fonctionality release](https://blog.bitwarden.com/autofill-improvements-come-to-ios-12-android-9-3072576c7411)
+E2.1 - Bitwarden clears any sensitive vault data, as well as encryption keys from memory whenever the application enters a locked state. We also use other techniques, such as reloading the process after 10 seconds of inactivity on the lock screen, to make sure any managed memory addresses which have not yet been garbage collected are also purged.
+
+E3.1 - Bitwarden uses fully audited open-source end-to-end encryption (e2ee). Which is as good a guarantee that it is secure and private as it’s possible to get. The only way to decrypt your data is by using the correct master password, which is not recoverable should you forget it. So don’t. [New Fonctionality release](https://blog.bitwarden.com/autofill-improvements-come-to-ios-12-android-9-3072576c7411).
+
+E5.1 - When your devices sync with the Bitwarden cloud servers, a copy of the encrypted data is downloaded and securely stored to your local device. Whenever you use the Bitwarden apps or extensions your data is decrypted only in memory as needed. Data is never stored in its decrypted form on the remote Bitwarden servers or on your local device.
 
 E6.1 - (See E3.1 case 4)
 
