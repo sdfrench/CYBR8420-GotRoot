@@ -92,7 +92,7 @@ E4.1 - Cloud [backups](https://help.bitwarden.com/article/backup-on-premise/) ar
 
 E5.1 - Cloud [backups](https://help.bitwarden.com/article/backup-on-premise/) are managed by Bitwarden.
 
-E6.1 - 
+E6.1 - Bitwarden's server-side ability to [scale](https://help.bitwarden.com/article/backup-on-premise/) make it inherently resilient to attacks against resources. Additionally, Bitwarden implements [IP-based blacklisting](https://www.reddit.com/r/Bitwarden/comments/9ld211/no_account_lockout_on_many_invalid_attempts/e75xxu1/?context=8&depth=9) against clients that fail too many logins in a period of time.
 
 
 ## Bitwarden Case Alignment 
