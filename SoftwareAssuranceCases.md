@@ -62,7 +62,7 @@ E8.1 - (See Case 1: E3.1)
 
 E9.1 - (See Case 3: E5.1) 
 
-E10.1 - Bitwarden discloses [here](https://help.bitwarden.com/article/what-information-is-encrypted/) what data won't be encrypted. Any metadata related to a secret will be encrypted.
+E10.1 - Bitwarden [discloses](https://help.bitwarden.com/article/what-information-is-encrypted/) what data will not be encrypted. Any metadata related to a secret will be encrypted.
 
 **Alignment:** 6|7 ⚠️
 
@@ -78,6 +78,7 @@ E2.1 - Bitwarden [clears any sensitive vault data](https://community.bitwarden.c
 E3.1 - Bitwarden uses fully audited open-source end-to-end encryption (e2ee). Which is as good a guarantee that it is secure and private as it’s possible to get. The only way to decrypt your data is by using the correct master password, which is not recoverable should you forget it. So don’t. [New Functionality release](https://blog.bitwarden.com/autofill-improvements-come-to-ios-12-android-9-3072576c7411).
 
 E5.1 - When devices sync with the Bitwarden cloud servers, a copy of the encrypted data is downloaded and [securely stored to the local device](https://help.bitwarden.com/article/how-is-data-securely-transmitted-and-stored/). Bitwarden apps or extensions ensure that data is decrypted only in memory as needed. Data is never stored in its decrypted form on the remote Bitwarden servers or on the local device.
+
 
 E6.1 - (See E3.1 case 4)
 
