@@ -10,7 +10,7 @@ Raw htm available [here](https://github.com/caseyschmitz/CYBR8420-GotRoot/blob/m
 
 ### Threat 2: External Entity Human User Potentially Denies Receiving Data
 
-The encrypted vault data is stored localy in a JSON file, which also contains some metadata. One of the metadata fields shows when vault was last successfully synced with server, however the client does not keep a log or audit failed attempts to sync vault with Bitwarden server.
+Data with the local vault is encrypted a local JSON file, along with 2 lines metadata. The metadata saves the time of the most recent sync with the server, however the client does not keep an audit log of failed attempts to sync vault with Bitwarden server.
 
 ### Threat 7: Potential Data Repudiation by Auth Module 
 The Bitwarden CLI client in its source code does not address any line about saving a login history in a log file. Indeed, after login out, all the data contain in the unique file on which it writes are erase and the file contains only 3 lignes not related to any login information.
