@@ -11,19 +11,19 @@ Raw htm available [here](https://github.com/caseyschmitz/CYBR8420-GotRoot/blob/m
 
 ### Threat 2: External Entity Human User Potentially Denies Receiving Data
 
-Data with the local vault is encrypted a local JSON file, along with 2 lines metadata. The metadata saves the time of the most recent sync with the server, however the client does not keep an audit log of failed attempts to sync vault with Bitwarden server.
+Local vault is encrypted and stored within a JSON file, along with 3 lines metadata. This metadata stores the applications ID hash and a timestamp for the most recent sync with the server. The client does not keep an audit log of failed attempts with the Bitwarden server.
 
-### Threat 7: Potential Data Repudiation by Auth Module 
-The Bitwarden CLI client in its source code does not address any line about saving a login history in a log file. Indeed, after login out, all the data contain in the unique file on which it writes are erase and the file contains only 3 lines not related to any login information.
+### Threat 7: Potential Data Repudiation by the Authentication Module 
+The Bitwarden CLI client does not maintain a local log file. That is maintained by the Bitwarden server. The local vault is purged of data when the client logs out. Only the application ID hash and a default timestamp remain.
 
 ### Threat 20: Spoofing of the Bitwarden Server External Destination Entity
-The Bitwarden client uses TLS encryption and encrypts all sensitive data before sending to server so no sensitive information would be theoretically compromised in the event the Bitwarden server was successfully spoofed. However if the client was attempting to sync any updates made to vault data or encryption keys it may result in lost data or possible data corruption.
+The Bitwarden client uses TLS encryption and encrypts all sensitive data before sending it to server. Theoretically preventing information disclosure in the event that the Bitwarden server was spoofed. However, if the client attempts to sync any updates made to vault data or encryption keys, it may result in lost data or possible data corruption.
 
-### Threat 26: Potential Excessive Resource Consumption for Secrets Module or Local File System
+### Threat 26: Potential Excessive Resource Consumption for the Secrets Module or Local File System
 The Bitwarden CLI client makes singular read/write attempts to a json file on the local file system that, despite not appearing to have graceful error-handling, should not consume resources in an excessive manner. The client will simply fail to read/write this file and fail to operate as intended.
 
-### Threat 31: Data Flow HTTPS Is Potentially Interrupted
-The Bitwarden CLI client does not perform any monitoring between the Secrets Module and the Bitwarden Server to prevent excessive disk/CPU consumption in the event that the Bitwarden Server is unavailable. However, the client makes singular requests to the Bitwarden Server that, upon failure, do not prompt additional requests to services on the Bitwarden Server.
+### Threat 31: Data Flow HTTPS is Potentially Interrupted
+The Bitwarden CLI client does not perform monitoring between the Secrets Module and the Bitwarden Server to prevent excessive disk/CPU consumption in the event that the Bitwarden Server is unavailable. However, the client makes singular requests to the Bitwarden Server that, upon failure, do not prompt additional requests to services on the Bitwarden Server.
 
 ### Threat 48: Data Flow Secrets Requests (CRUD) Is Potentially Interrupted
 The Bitwarden CLI client does not perform any monitoring between the user and the Secrets Module to prevent excessive disk/CPU consumption in the event that the Secrets Module is unavailable.
