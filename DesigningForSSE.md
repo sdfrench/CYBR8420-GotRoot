@@ -4,7 +4,7 @@
 ![](https://github.com/caseyschmitz/CYBR8420-GotRoot/blob/master/Images/L0_Bitwarden.png)
 
 ## Level-1 DFDs and Identified Threats
-![](https://github.com/caseyschmitz/CYBR8420-GotRoot/blob/master/Images/Bitwarden_DFD.pdf))
+![](https://github.com/caseyschmitz/CYBR8420-GotRoot/blob/master/Images/Bitwarden_DFD.pdf)
 
 
 ## Threats Requiring Further Investigation
