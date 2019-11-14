@@ -17,7 +17,7 @@ Data with the local vault is encrypted a local JSON file, along with 2 lines met
 The Bitwarden CLI client in its source code does not address any line about saving a login history in a log file. Indeed, after login out, all the data contain in the unique file on which it writes are erase and the file contains only 3 lines not related to any login information.
 
 ### Threat 20: Spoofing of the Bitwarden Server External Destination Entity
-The Bitwarden client uses TLS encryption and encrypts all sensitive data before sending to server so no sensitive information would be theoretically compromised in the event the Bitwarden server was successfully spoofed. However if the client was attempting to sync any updates made to vault data or encryption keys it may result in lost data or possible data corruption
+The Bitwarden client uses TLS encryption and encrypts all sensitive data before sending to server so no sensitive information would be theoretically compromised in the event the Bitwarden server was successfully spoofed. However if the client was attempting to sync any updates made to vault data or encryption keys it may result in lost data or possible data corruption.
 
 ### Threat 26: Potential Excessive Resource Consumption for Secrets Module or Local File System
 The Bitwarden CLI client makes singular read/write attempts to a json file on the local file system that, despite not appearing to have graceful error-handling, should not consume resources in an excessive manner. The client will simply fail to read/write this file and fail to operate as intended.
