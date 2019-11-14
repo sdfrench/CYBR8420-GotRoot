@@ -1,4 +1,4 @@
-# Requirements for Software Security Engineering
+# Designing for Software Security Engineering
 
-## Background
+![](images/L0_Bitwarden.png)
 
