@@ -14,7 +14,8 @@
 ### Threat 3
 
 
-### Threat 7
+### Threat 7:Potential Data Repudiation by Auth Module 
+The Bitwarden CLI client in its source code does not address any line about saving a login history in a log file. Indeed, after login out, all the data contain in the unique file on which it writes are erase and the file contains only 3 lignes not related to any login information.
 
 ### Threat 20
 
