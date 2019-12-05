@@ -17,3 +17,4 @@ The contents of this repository are the project requirements for the CYBR 8420 S
 2. [Requirements for Software Security Engineering](SoftwareSecurityRequirements.md)
 3. [Assurance Cases for Software Security Engineering](SoftwareAssuranceCases.md)
 4. [Designing for Software Security Engineering](DesigningForSSE.md)
+5. [Code Analysis for Software Security Engineering](CodeAnalysisForSSE.md)
