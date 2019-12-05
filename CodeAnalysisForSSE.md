@@ -17,9 +17,19 @@
 - [Code Example](https://rules.sonarsource.com/typescript/RSPEC-4823)
 
 #### Findings
-
+- #TODO
 
 ## Automated Code Review
 
+### ACR1: SonarQube (Static Analysis)
+- [Results on SonarCloud](https://sonarcloud.io/organizations/cybr8420gotroot/projects)
+
+#### Findings
+- #TODO
+
+### ACR2: (@scott)
+
+#### Findings
+- #TODO
 
 ## Summary of Findings
