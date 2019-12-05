@@ -1,12 +1,12 @@
 # Code analysis for Software Security Engineering
 
-## Code review strategy
+## Code Review Strategy
 
 
-## Findings from manual code review
+## Manual Code Review
 
 
-## Findings from automated code scanning
+## Automated Code Review
 
 
-## Summary of key findings (CWE mappings, risk levels, etc)
+## Findings
