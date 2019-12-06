@@ -171,25 +171,23 @@ Bitwarden Command Line --help Output:
 
 #### Findings
 
-Bitwarden uses API calls to server to verify email and password hashes match. If that is successful, vault data is then sent back to client as JSON, which is in turn is stored in a local [file](https://help.bitwarden.com/article/where-is-data-stored-computer/) on the device. All communication between client and server is done using a TLS connection. (On Linux the vault is stored in user's home directory at ~/.config/Bitwarden CLI/data.json.) While some metadata is stored as clear text in vault file (as noted [here](https://help.bitwarden.com/article/what-information-is-encrypted/)), all sensitive data is encrypted. Once the device has a local copy of the vault, it no longer needs to make any calls to Internet to decrypt items in the vault. Although it does not make calls to Internet, the Bitwarden command line program does not run in background and therefore uses a session ID to preserve auth status between executions. As can be seen below, the bw binary offers the users two methods to pass session ID to program. The first method set the session ID to an environment variable. Once the variable is set in environment, the bw command can be run to display sensite data as clear text without providing any other credentials. This of course means that if a privileged user was able to view environment variables, they could essentially highjack session and decrypt any data in vault without knowing the master password. The second method allows the user to pass the session as a command line argument. With this method, any user could list he process table with command line args and potentially hijack the session. The would also need access to local vault file as well which may prevent non-privileged users from carrying out a successful attack.
+Bitwarden uses API calls to server to verify email and password hashes match. If that is successful, vault data is then sent back to client as JSON, which is in turn is stored in a local [file](https://help.bitwarden.com/article/where-is-data-stored-computer/) on the device. All communication between client and server is done using a TLS connection. (On Linux the vault is stored in user's home directory at ~/.config/Bitwarden CLI/data.json.) While some metadata is stored as clear text in vault file (as noted [here](https://help.bitwarden.com/article/what-information-is-encrypted/)), all sensitive data is encrypted. Once the device has a local copy of the vault, it no longer needs to make any calls to Internet to decrypt items in the vault. Although it does not make calls to Internet, the Bitwarden command line program does not run in background and therefore uses a session ID to preserve auth status between executions. As can be seen below, the bw binary offers the users two methods to pass session IDs to program. The first method sets the session ID to an environment variable. Once the variable is set in the user's environment, the bw command can be run to display sensite data as clear text without providing any other credentials. This of course means tht a privileged user on that device was able to view environment variables, they could easily highjack session and use it to decrypt any data in the users unlocked vault. The second method allows the user to pass the session as a command line argument. With this method, any user could list he process table with command line args and potentially hijack the session. They would also need read access to local unlocked vault file as well which may prevent non-privileged users from carrying out a successful attack.
 
    
-   $ bw logout
-   You have logged out.
-   $ bw login
-   ? Email address: [someuser]@unomaha.edu
-   ? Master password: [hidden]
-   You are logged in!
+    $ bw logout
+    You have logged out.
+    $ bw login
+    ? Email address: [someuser]@unomaha.edu
+    ? Master password: [hidden]
+    You are logged in!
 
-   To unlock your vault, set your session key to the `BW_SESSION` environment variable. ex:
-   $ export BW_SESSION="Y7jkFuQU+PyXZzpvmx+9CqasR6M4oZHzzEZ42hfKa16ldqBVgZAGBNzM8PI3f8eNNBSMEUv6VKbeH5QidC7V9g=="
-   > $env:BW_SESSION="Y7jkFuQU+PyXZzpvmx+9CqasR6M4oZHzzEZ42hfKa16ldqBVgZAGBNzM8PI3f8eNNBSMEUv6VKbeH5QidC7V9g=="
+    To unlock your vault, set your session key to the `BW_SESSION` environment variable. ex:
+    $ export BW_SESSION="Y7jkFuQU+PyXZzpvmx+9CqasR6M4oZHzzEZ42hfKa16ldqBVgZAGBNzM8PI3f8eNNBSMEUv6VKbeH5QidC7V9g=="
+    > $env:BW_SESSION="Y7jkFuQU+PyXZzpvmx+9CqasR6M4oZHzzEZ42hfKa16ldqBVgZAGBNzM8PI3f8eNNBSMEUv6VKbeH5QidC7V9g=="
 
-   You can also pass the session key to any command with the `--session` option. ex:
-   $ bw list items --session Y7jkFuQU+PyXZzpvmx+9CqasR6M4oZHzzEZ42hfKa16ldqBVgZAGBNzM8PI3f8eNNBSMEUv6VKbeH5QidC7V9g==
+    You can also pass the session key to any command with the `--session` option. ex:
+    $ bw list items --session Y7jkFuQU+PyXZzpvmx+9CqasR6M4oZHzzEZ42hfKa16ldqBVgZAGBNzM8PI3f8eNNBSMEUv6VKbeH5QidC7V9g==
   
-
-
 
 
 
