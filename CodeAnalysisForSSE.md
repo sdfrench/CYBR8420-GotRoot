@@ -259,4 +259,4 @@ Overall Bitwarden appears to be a well written application and its developers ap
 
 Iteration minimum is hardcoded: 5000 at both the client and server side.
 
-Default iteration is ser server side: 100,000
+Default iteration is set server side: 100,000
