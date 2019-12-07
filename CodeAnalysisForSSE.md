@@ -2,7 +2,9 @@
 
 ## Code Review Strategy
 
-Bitwarden, an open-source online password management service, has developed a good reputation for being secure over the years. We knew when we choose this application for our project, it was going to be a big undertaking and there would be no "low hangin fruit" given the maturity of the application coupled with the fact its completely open source and has already been [audited](https://cdn.bitwarden.net/misc/Bitwarden%20Security%20Assessment%20Report%20-%20v2.pdf) by third party security company. Bitwarden is primarily written in Microsoft's TypeScript language and has been ported to multiple platforms and Operating Systems to include most mobile devices and desktops/laptops used today. A couple team members naturally gravitated towards manual code review while the other half towards automated. 
+Bitwarden, an open-source online password management service, has developed a good reputation for being secure over the years. We knew when we choose this application for our project, it was going to be a big undertaking and there would be no "low hangin fruit" given the maturity of the application coupled with the fact its completely open source and has already been [audited](https://cdn.bitwarden.net/misc/Bitwarden%20Security%20Assessment%20Report%20-%20v2.pdf) by third party security company. 
+
+Bitwarden is primarily written in Microsoft's TypeScript language and has been ported to multiple platforms and Operating Systems to include most mobile devices and desktops/laptops used today. Due to time constraints we chose to focus on the command line application. When we started to do analysis a couple team members naturally gravitated towards manual code review while the other half towards the automated testing. 
 
 As expected, we initially had trouble finding any programming errors. The static scans were not returning anything significant and we not able to produce any segmentation faults with argument passing. All input validation appeared to handle any malformed arguments gracefully. Not getting anywhere with that we instead started to focus on logical errors, in particular in regards to it cryptographic implementations and best practices as outlined by NIST and OWASP.   
 
@@ -12,7 +14,7 @@ As expected, we initially had trouble finding any programming errors. The static
 ### Background
 Bitwarden is an open source, muti-platform, online password management service accessable via almost any personal device. Though Bitwarden stores sensitive data in the cloud, it has a proven reputation for security. The vault is only accessable via a one way hash derived from the users login information. Each item within the vault is encoded using the master hash and iterations of PBKDF2 defined by the user. The encrypted vault is then synced with the server via RSA public key infrastructure. The majority of Bitwarden's security features are client side, and this is where we have focused our analysis. To avoid most OS/GUI specific issues, manual code review was performed on Bitwarden's Command Line Interface (CLI) executable.
 
-Because we wanted to have access to any data sent over TLS with no or minimal modifications data payloads, we choose to implement a MITM style transparent TLS proxy. This was accomplished using VMWare and two Linux Mint VMs, one for the  client and the other to act as a gateway for the first VM. The gateway VM also used a combination of iptables NAT rules and sslsplit to facilitate the transparent proxy. The openssl binary was used to create self signed cert/key pair which in turn was used by sslsplit to forge certificates for any TLS sites accessed by client. Because the bitwarden command line client has its CA trust store embedded in the binary with no arguments to modify, we had to replace one of the CA certs with our self signed cert.  This was accomplished using ghex hex editor, dd and cat to locate , carve out and replace the cert respectively. Some padding was needed to ensure that the new cert was the exact same size as the one it replaced ensuring no alignment issues for instructions or data in binary.  The modified binary was appropriately named so it there was no confusion as to which one we were using. The commands below show the error with the native CA store vs the modified one. As it turns out very few commands required the modified version,  as the client uses a local copy of the vault which is synced after a successful login is made. 
+Because we wanted to have access to any data sent over TLS with no or minimal modifications data payloads, we choose to implement a MITM style transparent TLS proxy. This was accomplished using VMWare and two Linux Mint VMs, one for the  client and the other to act as a gateway for the first VM. The gateway VM also used a combination of iptables NAT rules and sslsplit to facilitate the transparent proxy. The openssl binary was used to create self signed cert/key pair which in turn was used by sslsplit to forge certificates for any TLS sites accessed by client. Because the bitwarden command line client has its CA trust store embedded in the binary with no arguments to modify, we had to replace one of the CA certs with our self signed cert.  This was accomplished using ghex hex editor, dd and cat to locate, carve out and replace the cert respectively. Some padding was needed to ensure that the new cert was the exact same size as the one it replaced ensuring no alignment issues for instructions or data in binary.  The modified binary was appropriately named so it there was no confusion as to which one we were using. The commands below show the error with the native CA store vs the modified one. As it turns out very few commands required the modified version,  as the client uses a local copy of the vault which is synced after a successful login is made. 
 
 
     $  bw login
@@ -190,22 +192,6 @@ Bitwarden uses API calls to server to verify email and password hashes match. If
     You can also pass the session key to any command with the `--session` option. ex:
     $ bw list items --session Y7jkFuQU+PyXZzpvmx+9CqasR6M4oZHzzEZ42hfKa16ldqBVgZAGBNzM8PI3f8eNNBSMEUv6VKbeH5QidC7V9g==
   
-
-
-
-### MCR1: Improper Input Validation ([CWE-20](https://cwe.mitre.org/data/definitions/20.html))
-- [OWASP](https://cheatsheetseries.owasp.org/cheatsheets/Input_Validation_Cheat_Sheet.html)
-- [Code Example](https://rules.sonarsource.com/typescript/RSPEC-4829)
-
-#### Findings
-- #TODO
-
-### MCR2: Improper Neutralization of Argument Delimiters in a Command ('Argument Injection') ([CWE-88](https://cwe.mitre.org/data/definitions/88.html))
-- [OWASP](https://cheatsheetseries.owasp.org/cheatsheets/Input_Validation_Cheat_Sheet.html)
-- [Code Example](https://rules.sonarsource.com/typescript/RSPEC-4823)
-
-#### Findings
-- #TODO
 
 ## Automated Code Review
 
