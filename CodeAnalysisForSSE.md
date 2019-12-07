@@ -49,7 +49,7 @@ Bitwarden uses a one way [hash](https://help.bitwarden.com/article/password-salt
 
 Bitwarden allows the end user to choose the number of iterations for the key derivation function. This value defaults to 100,000 iterations and has a hard coded minimum of 5000 iterations which is enforced in the code as shown in makeKey() function below. According to [NIST SP800-63b](https://pages.nist.gov/800-63-3/sp800-63b.html) (which was published in 2017) the minimum number of iterations should be 10000. The purpose of the iterations is to ensure the computation time is significant enough to protect a strong password against attack. We recommend the minimum should be set to at least the NIST standards, however that may not enough with today's hardware capabilities. Testing should be done to ensure the minimum is adequate for today's computing capabilities and should take precedence over supporting antiquated hardware. If multiple KDF functions are implemented, the minimum iterations should be tested individually and set respectively.
 
-Bitwarden uses a salt when computing the one way hash of the Master Password. As cab be seen makePreloginKey() and then makeKeu() functions below, the end users email is used as the salt. This does not seem  to follow [OWASP](https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html) best practices and purposes listed below. In particular, my email did not Meer the 32 byte requirements and could be considered cytptographically-strong random data. The lack of entropy with chosen salt coupled with a week password chosen by end user could pose serious threat to confidentiality of sensitive data.
+Bitwarden uses a salt when computing the one way hash of the Master Password.  As can be seen in makePreloginKey() and then makeKey() functions below, the end users email is used as the salt. This does not seem  to follow [OWASP](https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html) best practices and purposes listed below. An email would be considered cytptographically-strong random data and may not meet length requirements. 
 
 It should also be noted here that the Bitwarden command line client had a couple commands that allow for Master Password to be passed as a argument vs an interactive prompting for password. (Notice "unlock" and "export" commands in --help output below.) This is a dangerous practice as process tree can be viewed with command line arguments exposed by any user on system. This may have been added for scripting but alternative means should be used instead, such a using a text file containing passsword. 
 
@@ -98,19 +98,15 @@ It should also be noted here that the Bitwarden command line client had a couple
     
     ...
 
-[OWASP](https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html) salt practices and purposes:
+[OWASP](https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html) salt best practices:
 
-    Follow these practices to properly implement credential-specific salts:
-
-       - Generate a unique salt upon creation of each stored credential (not just per user or system wide);
-       - Use cryptographically-strong random data;
-       - As storage permits, use a 32 byte or 64 byte salt (actual size dependent on protection function);
-       - Scheme security does not depend on hiding, splitting, or otherwise obscuring the salt.
-
-    Salts serve two purposes:
-
-        1.  prevent the protected form from revealing two identical credentials and augment entropy fed to protecting function without relying on credential complexity. 
- 	2. The second aims to make pre-computed lookup attacks on an individual credential and time-based attacks on a population intractable.
+    Generate a salt using a cryptographically secure function.
+    The salt should be at least 16 characters long.
+    Encode the salt into a safe character set such as hexadecimal or Base64.
+    Combine the salt with the password.
+       This can be done using simple concatenation, or a construct such as a HMAC.
+    Hash the combined password and salt.
+    Store the salt and the password hash
 
 
 Bitwarden Command Line --help Output:
