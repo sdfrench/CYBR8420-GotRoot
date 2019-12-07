@@ -170,7 +170,7 @@ Bitwarden Command Line --help Output:
         bw config server https://bitwarden.example.com
 
 
-### MCR3: Session Management([CWE](https://cwe.mitre.org/data/definitions/256.html))
+### MCR3: Session Management([CWE 256](https://cwe.mitre.org/data/definitions/256.html))
 - [OWASP](https://cheatsheetseries.owasp.org/cheatsheets/Session_Management_Cheat_Sheet.html)
 
 #### Findings
