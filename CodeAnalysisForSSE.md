@@ -208,11 +208,21 @@ Bitwarden uses API calls to server to verify email and password hashes match. If
 
 ### ACR1: SonarQube (Static Analysis)
 - [Results on SonarCloud](https://sonarcloud.io/organizations/cybr8420gotroot/projects)
+Sonar's SonarScanner performs automated static code analysis by searching a project's codebase for Bugs, Vulnerabilities, Code Smells, and Security Hotspots. The rules applied in scans are selected based on the type of file being scanned - the rules are documented in Sonar's [rule library](https://rules.sonarsource.com/). Rules are tagged and enriched with related CVEs, CWEs, and examples of code that would trigger a finding.
 
-#### Findings
-- #TODO
+Sonar describes the finding types as follows:
+- *Bug*: A coding error that will break your code and needs to be fixed immediately.
+- *Vulnerabilities*: Code that can be exploited by hackers.
+- *Security Hotspots*: Security-sensitive code that requires manual review to assess whether or not a vulnerability exists.
+- *Code Smells*: Code that is confusing and difficult to maintain.
 
-### ACR2: (@scott)
+Scans were performed against components of Bitwarden's codebase by cloning repositories of interest, running SonarScanner locally against each, and uploading results to SonarCloud for reporting.
+
+##### Bitwarden JavaScript Libaray ([repo](https://github.com/bitwarden/jslib))
+![](https://github.com/caseyschmitz/CYBR8420-GotRoot/blob/master/Images/arc1_jslib.png)
+
+##### Bitwarden Command-Line Interface ([repo](https://github.com/bitwarden/cli))
+![](https://github.com/caseyschmitz/CYBR8420-GotRoot/blob/master/Images/arc1_cli.png)
 
 #### Findings
 - #TODO
