@@ -56,6 +56,7 @@ It should also be noted here that the Bitwarden command line client had a couple
 [auth.service.ts](https://github.com/bitwarden/jslib/blob/57e49207e9ad57c71576fc487a38513a4d0fe120/src/services/auth.service.ts) Source File:
 
     ...
+    
     async makePreloginKey(masterPassword: string, email: string): Promise<SymmetricCryptoKey> {
         email = email.trim().toLowerCase();
         this.kdf = null;
@@ -80,6 +81,7 @@ It should also be noted here that the Bitwarden command line client had a couple
 [crypto.service.ts](https://github.com/bitwarden/jslib/blob/57e49207e9ad57c71576fc487a38513a4d0fe120/src/services/crypto.service.ts) Source File:
 
     ...
+    
     async makeKey(password: string, salt: string, kdf: KdfType, kdfIterations: number):
         Promise<SymmetricCryptoKey> {
         let key: ArrayBuffer = null;
@@ -110,6 +112,7 @@ It should also be noted here that the Bitwarden command line client had a couple
 
 
 Bitwarden Command Line --help Output:
+
     $ bw --help
     Usage: bw [options] [command]
 
