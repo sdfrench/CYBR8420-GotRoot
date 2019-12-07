@@ -33,19 +33,19 @@ Because we wanted to have access to any data sent over TLS with no or minimal mo
     $ bw list items --session lbSk2rQD0SR1sYFKJjt9EIFTCyNDKq7bFNt8uCfzlI+znBfPETrkNOWJECmM8+VPZxRDoF2PJY5XEmV6OeoEIg==
 
 
-### MCR1: Password Strength ([CWE]())
+### MCR1: Password Strength ([CWE 521](https://cwe.mitre.org/data/definitions/521.html))
 - [OWASP](https://cheatsheetseries.owasp.org/cheatsheets/Authentication_Cheat_Sheet.html)
-- [Code Example]()
+- [NIST](https://pages.nist.gov/800-63-3/sp800-63b.html)
+
 
 #### Findings
 
 Bitwarden uses a "Master Password" that is chosen by the end user and what is ultimately used to protect the end user's sensitive data. Although the master password cannot be created and changed with command line client, it is worth mentioning that the minimum password length is 8 characters. A password shorter than 8 is considered weak to be weak according to [NIST SP800-63b](https://pages.nist.gov/800-63-3/sp800-63b.html). Bitwarden does have a Master Password strength validation tool however it is only suggestive and will allow a user to choose a weak password. Bitwarden complies with the minimum requirements for password length, however we would still like to see some enforcement of password complexity as well as checks to see if matches commonly used or previously breached password lists.
 
 
-### MCR2: Password Storage ([CWE]())
+### MCR2: Password Storage ([CWE 916](https://cwe.mitre.org/data/definitions/916.html))
 - [OWASP](https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html)
 - [NIST](https://pages.nist.gov/800-63-3/sp800-63b.html)
-- [Code Example]()
 
 #### Findings
 
