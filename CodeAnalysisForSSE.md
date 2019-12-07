@@ -101,10 +101,10 @@ It should also be noted here that the Bitwarden command line client had a couple
 [OWASP](https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html) salt best practices:
 
     Generate a salt using a cryptographically secure function.
-    The salt should be at least 16 characters long.
-    Encode the salt into a safe character set such as hexadecimal or Base64.
+        The salt should be at least 16 characters long.
+        Encode the salt into a safe character set such as hexadecimal or Base64.
     Combine the salt with the password.
-       This can be done using simple concatenation, or a construct such as a HMAC.
+        This can be done using simple concatenation, or a construct such as a HMAC.
     Hash the combined password and salt.
     Store the salt and the password hash
 
