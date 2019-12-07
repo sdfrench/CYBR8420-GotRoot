@@ -2,6 +2,10 @@
 
 ## Code Review Strategy
 
+Bitwarden, an open-source online password management service, has developed a good reputation for being secure over the years. We knew when we choose this application for our project, it was going to be a big undertaking and there would be no "low hangin fruit" given the maturity of the application coupled with the fact its completely open source and has already been [audited](https://cdn.bitwarden.net/misc/Bitwarden%20Security%20Assessment%20Report%20-%20v2.pdf) by third party security company. Bitwarden is primarily written in Microsoft's TypeScript language and has been ported to multiple platforms and Operating Systems to include most mobile devices and desktops/laptops used today. A couple team members naturally gravitated towards manual code review while the other half towards automated. 
+
+As expected, we initially had trouble finding any programming errors. The static scans were not returning anything significant and we not able to produce any segmentation faults with argument passing. All input validation appeared to handle any malformed arguments gracefully. Not getting anywhere with that we instead started to focus on logical errors, in particular in regards to it cryptographic implementations and best practices as outlined by NIST and OWASP.   
+
 
 ## Manual Code Review
 
