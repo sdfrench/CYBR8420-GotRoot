@@ -257,7 +257,7 @@ Overall Bitwarden appears to be a well written application and its developers ap
 
 We were considering posting to communtiy to move minimum iterations up to 10000 but we found the issue already raised in source repo and related community threads that were already closed.  
 
-[Bitwarden Server security issue]([https://github.com/bitwarden/server/issues/589)
+[Bitwarden Server security issue](https://github.com/bitwarden/server/issues/589)
 
 ### Closed post for [KDF Iterations](https://www.reddit.com/r/Bitwarden/comments/a7mttg/kdf_iterations_online_vault/)
 
