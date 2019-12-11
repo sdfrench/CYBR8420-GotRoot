@@ -57,7 +57,6 @@ Bitwarden allows the end user to choose the number of iterations for the key der
 
 Bitwarden uses a salt when computing the one way hash of the Master Password.  As can be seen in makePreloginKey() and then makeKey() functions below, the end user email is used as the salt. This does not seem  to follow [OWASP](https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html) best practices and purposes listed below. An email would not be considered cryptographically-strong random data and may not meet minimum recommended length requirements. 
 
-It should also be noted here that the Bitwarden command line client had a couple commands that allow for Master Password to be passed as a argument vs an interactive prompting for password. (Notice "unlock" and "export" commands in --help output below.) This is a dangerous practice as process tree can be viewed with command line arguments exposed by any user on system. ([CWE 522](https://cwe.mitre.org/data/definitions/522.html)) This may have been added for scripting but alternative means should be used instead, such a using a text file containing passsword. 
 
 [auth.service.ts](https://github.com/bitwarden/jslib/blob/57e49207e9ad57c71576fc487a38513a4d0fe120/src/services/auth.service.ts) Source File:
 
@@ -115,7 +114,14 @@ It should also be noted here that the Bitwarden command line client had a couple
         This can be done using simple concatenation, or a construct such as a HMAC.
     Hash the combined password and salt.
     Store the salt and the password hash.
+    
 
+### MCR3: Insufficiently Protected Credentials ([CWE 522](https://cwe.mitre.org/data/definitions/522.html))
+- [OWASP](https://github.com/OWASP/CheatSheetSeries/blob/master/cheatsheets/Authentication_Cheat_Sheet.md)
+
+#### Findings
+
+Bitwarden command line client has a couple commands that allow for Master Password to be passed as a argument vs an interactive prompting for password. (Notice "unlock" and "export" commands in --help output below.) This is a dangerous practice as process tree can be viewed with command line arguments exposed by any user on system. This may have been added for scripting but alternative means should be used instead, such a using a text file containing passsword. 
 
 Bitwarden Command Line --help Output:
 
@@ -170,12 +176,14 @@ Bitwarden Command Line --help Output:
         bw config server https://bitwarden.example.com
 
 
-### MCR3: Session Management([CWE 256](https://cwe.mitre.org/data/definitions/256.html))
+### MCR4: Session Management([CWE 256](https://cwe.mitre.org/data/definitions/256.html))
 - [OWASP](https://cheatsheetseries.owasp.org/cheatsheets/Session_Management_Cheat_Sheet.html)
 
 #### Findings
 
-Bitwarden command line client uses API calls to server to validate email and password hash. If that is successful, the vault data is then sent back to client as JSON, which is in turn is stored in a local [file](https://help.bitwarden.com/article/where-is-data-stored-computer/) on the device. All communication between client and server is done using a TLS connection. (On Linux the vault is stored in user's home directory at ~/.config/Bitwarden CLI/data.json.) While some metadata is stored as clear text in vault file (as noted [here](https://help.bitwarden.com/article/what-information-is-encrypted/)), all sensitive data is encrypted. Once the device has a local copy of the vault, it no longer needs to make any calls to Internet to decrypt items in the vault. Although it does not make calls to Internet, the Bitwarden command line program does not run in background and therefore uses a session ID to preserve auth status between executions. As can be seen below, the bw binary offers the users two methods to pass session IDs to program. The first method sets the session ID to an environment variable. Once the variable is set in the user's environment, the bw command can be run to display sensitive data as clear text without providing any other credentials. This of course means that a privileged user on that device was able to view environment variables, they could easily hijack session and use it to decrypt any data in the users unlocked vault. The second method allows the user to pass the session as a command line argument. With this method, any user could list the process table with command line args and potentially hijack the session. They would also need read access to local unlocked vault file as well which may prevent non-privileged users from carrying out a successful attack.
+Bitwarden command line client uses API calls to server to validate email and password hash. If that is successful, the vault data is then sent back to client as JSON, which is in turn is stored in a local [file](https://help.bitwarden.com/article/where-is-data-stored-computer/) on the device. All communication between client and server is done using a TLS connection. (On Linux the vault is stored in user's home directory at ~/.config/Bitwarden CLI/data.json.) While some metadata is stored as clear text in vault file (as noted [here](https://help.bitwarden.com/article/what-information-is-encrypted/)), all sensitive data is encrypted. Once the device has a local copy of the vault, it no longer needs to make any calls to Internet to decrypt items in the vault. Although it does not make calls to Internet, the Bitwarden command line program does not run in background and therefore uses a session ID to preserve auth status between executions. 
+
+As can be seen below, the bw binary offers the users two methods to pass session IDs to program. The first method sets the session ID to an environment variable. Once the variable is set in the user's environment, the bw command can be run to display sensitive data as clear text without providing any other credentials. This of course means that a privileged user on that device was able to view environment variables, they could easily hijack session and use it to decrypt any data in the users unlocked vault. The second method allows the user to pass the session as a command line argument. With this method, any user could list the process table with command line args (similar to MCR3) and potentially hijack the session. However, they would also need read access to local unlocked vault file (which the session is tied to) as well, which may prevent non-privileged users from carrying out a successful attack.
 
    
     $ bw logout
