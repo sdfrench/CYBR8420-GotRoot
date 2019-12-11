@@ -255,9 +255,9 @@ Example:
 
 Overall Bitwarden appears to be a well written application and its developers appear to follow good coding practices. For the manual code review, we found the OWASP cheat sheets to be a valuable reference as to what we should be looking at. Initially we were unable to find any obvious coding issues and begin to set up a lab to do some live analysis. This lead us to several implementation issues we feel warranted some attention. The first was related to enforcement of password complexity, the next two, minimum iterations and salt values, did not appear to be in alignment for best practices as reported by OWASP and/or NIST, and the last two were related to run time management of passwords and session ids in a Linux environments. 
 
-We were considering posting to communtiy to move minimum iterations up to 10000 but we found issues already open and some related threads that were closed. 
+We were considering posting to communtiy to move minimum iterations up to 10000 but we found the issue already raised in source repo and related community threads that were already closed.  
 
-(Bitwarden Server security issue)[https://github.com/bitwarden/server/issues/589]
+[Bitwarden Server security issue]([https://github.com/bitwarden/server/issues/589)
 
 ### Closed post for [KDF Iterations](https://www.reddit.com/r/Bitwarden/comments/a7mttg/kdf_iterations_online_vault/)
 
