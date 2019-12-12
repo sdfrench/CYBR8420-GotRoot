@@ -1,0 +1,49 @@
+References
+
+8 Bit Solutions. (2019). What encryption is being used?. Retrieved from https://help.bitwarden.com/article/what-encryption-is-used/
+
+8 Bit Solutions. (2018). Bitwarden Security Assessment Report [PDF file]. Retrieved from https://cdn.bitwarden.net/misc/Bitwarden%20Security%20Assessment%20Report.pdf
+
+Hackerone. (2019, May 30). Bitwarden: Vulnerability Disclosure Program. Retrieved from https://hackerone.com/bitwarden/
+
+Qualys. (2019). SSL Server Test. Retrieved from https://www.ssllabs.com/ssltest/index.html
+
+8 Bit Solutions. (2019). Create Account. Retrieved from https://vault.bitwarden.com/#/register
+
+8 Bit Solutions. (2019). Set up two-step login (2FA). Retrieved from https://help.bitwarden.com/article/setup-two-step-login/
+
+8 Bit Solutions. (2019). I forgot my master password. Retrieved from https://help.bitwarden.com/article/forgot-master-password/
+
+8 Bit Solutions. (2019). How is my data securely transmitted and stored on Bitwarden servers?. Retrieved from https://help.bitwarden.com/article/how-is-data-securely-transmitted-and-stored/
+
+Spearrin, K. (2019, February 22). Any thoughts on this independent security study? Apparently all the major PW managers are insecure. Retrieved from https://community.bitwarden.com/t/any-thoughts-on-this-independent-security-study-apparently-all-the-major-pw-managers-are-insecure/4663/7
+
+8 Bit Solutions. (2019). How do you keep the cloud servers secure?. Retrieved from https://help.bitwarden.com/article/cloud-server-security/
+
+8 Bit Solutions. (2019). Backing up your on-premises hosted data. Retrieved from https://help.bitwarden.com/article/backup-on-premise/
+
+MITRE. (2019, June 20). CWE-521: Weak Password Requirements. Retrieved from https://cwe.mitre.org/data/definitions/521.html
+
+NIST. (2017, June). NIST Special Publication 800-63B: Digital Identity Guidelines: Authentication and Lifecycle Management. Retrieved from https://pages.nist.gov/800-63-3/sp800-63b.html
+
+MITRE. (2019, June 20). CWE-916: Use of Password Hash With Insufficient Computational Effort. Retrieved from https://cwe.mitre.org/data/definitions/916.html
+
+OWASP. (n.d.). Password Storage Cheat Sheet. Retrieved from https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html
+
+MITRE. (2019, June 20). CWE-522: Insufficiently Protected Credentials. Retrieved from https://cwe.mitre.org/data/definitions/522.html
+
+Sonar Source. (2019, December). Hashing data is security-sensitive. Retrieved from https://rules.sonarsource.com/typescript/RSPEC-4790
+
+MITRE. (2018, December 27). CWE-624: Executable Regular Expression Error. Retrieved from https://cwe.mitre.org/data/definitions/624.html
+
+OWASP. (2017, July 5). Regular expression Denial of Service - ReDoS: Evil Regexes. Retrieved from https://www.owasp.org/index.php/Regular_expression_Denial_of_Service_-_ReDoS#Evil_Regexes
+
+OWASP. (2017, July 5). Regular expression Denial of Service - ReDoS: Examples. Retrieved from https://www.owasp.org/index.php/Regular_expression_Denial_of_Service_-_ReDoS#Examples
+
+OWASP. (2018, September 23). CWE-88: Improper Neutralization of Argument Delimiters in a Command ('Argument Injection'). Retrieved from https://cwe.mitre.org/data/definitions/88.html
+
+Sonar Source. (2019, December). Using command line arguments is security-sensitive. Retrieved from https://rules.sonarsource.com/typescript/RSPEC-4823
+
+Ernewein, R. (2019, December 10). Prehashing Passwords. Retrieved from https://community.bitwarden.com/t/pre-hashing-passwords/9329
+
+8 Bit Solutions. (2018, November 8). Bitwarden Security Assessment Report [PDF file]. Retrieved from https://cdn.bitwarden.net/misc/Bitwarden%20Security%20Assessment%20Report%20-%20v2.pdf
